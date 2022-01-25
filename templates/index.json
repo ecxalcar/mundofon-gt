@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "mundofon_featured_slider": {
+      "type": "mundofon-featured-slider",
+      "settings": {
+        "section_arrows": true
+      }
+    }
+  },
+  "order": [
+    "mundofon_featured_slider"
+  ]
+}

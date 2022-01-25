@@ -1,0 +1,129 @@
+<div class="featured-slider-section">
+    <div class="container">
+        {% if section.settings.section_arrows %}
+            <div class="slider-btn-container">
+                <button aria-label="Previous" class="slider-btn glider-prev">
+                    <svg width="42" height="64" viewBox="0 0 42 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M35 7L10 32L35 57" stroke="white" stroke-width="13" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button aria-label="Next" class="slider-btn glider-next">
+                    <svg width="42" height="64" viewBox="0 0 42 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M35 7L10 32L35 57" stroke="white" stroke-width="13" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div><!--/.button-slider-->
+        {% endif %}
+    </div><!--/.container-->
+
+    <div class="glider-featured-slider" data-sliderId=" {{ section.id }}">
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'slide' %}
+                    <div class="item">
+                        {{ block.settings.slide_image | img_url: 'master' | img_tag: 'alt text', 'd-block w-100' }}
+                        <div class="container">
+                            <h1>Un mundo de Smartphones y consolas</h1>
+                        </div>
+                    </div><!-- /item -->
+            {% endcase %}
+        {% else %}
+            {% for block in (1..3) %}
+                <div class="item">
+                    {{ 'slide1.jpg' | asset_url | img_tag: '','d-block w-100' }}
+                    <div class="container">
+                        <h1>Un mundo de Smartphones y consolas</h1>
+                    </div>
+                </div><!--/.item-->
+            {% endfor %}
+        {% endfor %}
+    </div><!--/.glider-featured-slider-->
+</div><!-- /.featured-slider-section -->
+
+<div class="container-collections">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="single-collection">
+                    <a href="#0">
+                        <div class="collection-img p-5">
+                            {{ 'smartphones-collection.png' | asset_url | img_tag: '','d-block w-100' }}
+                        </div>
+                        <div class="collection-title text-center">
+                            <h2>Smartphones</h2>
+                        </div><!--/.collection-title-->
+                    </a>
+                </div><!--/.single-collection-->
+            </div><!--/.col-->
+            <div class="col-md-6">
+                <div class="single-collection">
+                    <a href="#0">
+                        <div class="collection-img p-5">
+                            {{ 'consolas-collection.png' | asset_url | img_tag: '','d-block w-100' }}
+                        </div>
+                        <div class="collection-title text-center">
+                            <h2>Consolas</h2>
+                        </div><!--/.collection-title-->
+                    </a>
+                </div><!--/.single-collection-->
+            </div><!--/.col-->
+        </div>
+    </div>
+</div>
+
+
+<div class="featured-banner my-5">
+    <div class="container">
+        <div class="featured-banner-wrapper p-5 bg-info">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="description">
+                        <h2 class="text-warning">Lo más nuevo!</h2>
+                        <h2 class="text-white mb-4">Aquí encontrarás consolas más potentes del momento.</h2>
+                        <a href="#0" class="btn btn-secondary px-5 py-3">Comprar ahora</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="img">
+                        {{ 'img-banner.png' | asset_url | img_tag: '','d-block w-100' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/.featured-banner-->
+
+{% schema %}
+{
+    "name": "Featured Slider",
+    "tag": "section",
+    "class": "mundofon-featured-slider",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "section_arrows",
+            "label": "Show Arrows?",
+            "default": true
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Slide",
+            "type": "slide",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "slide_image",
+                    "label": "Slide Image"
+                },
+                {
+                    "type": "text",
+                    "id": "slide_heading",
+                    "label": "Slide Heading",
+                    "default": "Slide 1"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
