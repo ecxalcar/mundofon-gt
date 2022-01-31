@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark py-3">
+<nav class="navbar navbar-expand-lg bg-dark py-3">
 	<div class="container">
 		<a class="navbar-brand text-white" href="{{ shop.url }}">{{ 'logo.svg' | asset_url | img_tag: '','w-100' }}</a>
 		<button class="navbar-toggler bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
@@ -8,10 +8,6 @@
 
 		<div class="collapse navbar-collapse" id="main_nav">
 			<ul class="navbar-nav me-auto">
-				<li><a href="#0" class="text-white ms-1 me-1">Item</a></li>
-				<li><a href="#0" class="text-white ms-1 me-1">Item</a></li>
-				<li><a href="#0" class="text-white ms-1 me-1">Item</a></li>
-				<li><a href="#0" class="text-white ms-1 me-1">Item</a></li>
 				{% for link in linklists.header-menu.links %}
 					<li class="nav-item {% if link.links.size > 0 %} dropdown {% endif %} ">
 						<a class="nav-link {% if link.links.size > 0 %} dropdown-toggle {% endif %}" href="{{ link.url }}" {% if link.links.size > 0 %} data-bs-toggle="dropdown"{% endif %} > {{ link.title }} </a>

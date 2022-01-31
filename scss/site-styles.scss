@@ -10,16 +10,17 @@ p {
     font-size: 16px;
     font-weight: 400;
     color: #000;
+    margin: 0;
 
     @include media (md-max) {
         font-size: 14px;
     }
 }
 
-
 h1 {
     font-size: 46px;
     font-weight: 700;
+    margin: 0;
 
     @include media (lg-max) {
         font-size: 32px;
@@ -33,6 +34,7 @@ h1 {
 h2 {
     font-size: 40px;
     font-weight: 500;
+    margin: 0;
 
     @include media (lg-max) {
         font-size: 32px;
@@ -46,6 +48,7 @@ h2 {
 h3 {
     font-size: 20px;
     font-weight: 500;
+    margin: 0;
 
     @include media(md-max) {
         font-size: 18px;
@@ -95,8 +98,26 @@ h3 {
 
     &:hover {
         text-decoration: underline;
-        color: #CFE7F4;
+        color: #fff;
     }
+}
+
+.dropdown-menu {
+    li {
+        a {
+            padding: 5px;
+
+            &:hover {
+                color: #000;
+            }
+        }
+    }
+}
+
+.nav-link, 
+.dropdown-toggle, 
+.show {
+    color: #fff !important;
 }
 
 .search-container {
@@ -179,7 +200,6 @@ h3 {
         }
     }
 }
-
 
 .item img {
     max-height: 500px;
@@ -300,7 +320,48 @@ h3 {
     }
 }
 
+.social-media-banner {
+    .social-media {
+        .icon {
+            width: 100%;
+            text-align: center;
+
+            svg {
+                width: 100%;
+                max-width: 60px;
+                height: 100%;
+                max-height: 55px;
+                transition: all 200ms ease-in-out;
+
+                @include media(lg-max) {
+                    max-width: 35px;
+                    max-height: 40px;
+                }
+
+                &:hover {
+                    transform: scale(1.5);
+                }
+
+                path {
+                    fill: #265169;
+                }
+            }
+        }
+    }
+}
+
+.hero-page {
+
+    h1 {
+        @include media(md-max) {
+            font-size: 28px;
+        }
+    }
+}
+
 footer {
+    margin-top: 100px;
+    
     .footer-wrapper {
         background-color: #000;
 
@@ -339,5 +400,14 @@ footer {
 
     .social-media {
         max-width: 200px;
+
+        .icon svg {
+            max-width: 30px;
+            max-height: 26px;
+
+            path {
+                fill: #ffffff;
+            }
+        }
     }
 }
