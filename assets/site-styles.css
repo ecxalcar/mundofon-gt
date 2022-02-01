@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap");
 * {
   border-radius: 0 !important;
-  font-family: 'Poppins', sans-serif; }
+  font-family: 'Poppins', sans-serif;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out; }
 
 p {
   font-size: 16px;
@@ -59,6 +61,9 @@ h3 {
   background-color: #07689F !important;
   color: #000;
   border-color: #07689F !important; }
+
+.text-info {
+  color: #07689F !important; }
 
 .btn:hover,
 .btn:active,
@@ -290,8 +295,42 @@ h3 {
       fill: #265169; }
 
 @media screen and (max-width: 767px) {
-  .hero-page h1 {
+  .hero-page h1,
+  .wrapper-list-collection-heading h1 {
     font-size: 28px; } }
+
+.wrapper-blog-articles a {
+  text-decoration: none;
+  display: block;
+  height: 100%; }
+  .wrapper-blog-articles a:hover {
+    -webkit-box-shadow: 0px 5px 20px 0px #35495829;
+            box-shadow: 0px 5px 20px 0px #35495829; }
+  .wrapper-blog-articles a .blog-article {
+    height: 100%; }
+    .wrapper-blog-articles a .blog-article .img img {
+      width: 100%;
+      height: 230px;
+      -o-object-fit: cover;
+         object-fit: cover;
+      max-height: 230px; }
+
+article .image {
+  position: relative;
+  max-height: 500px; }
+  article .image img {
+    height: 100%;
+    max-height: 500px;
+    -o-object-fit: cover;
+       object-fit: cover; }
+  article .image .container {
+    position: absolute;
+    margin: 0 auto;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    background: white; }
 
 footer {
   margin-top: 100px; }

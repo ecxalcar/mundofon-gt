@@ -24,7 +24,7 @@
                         {{ block.settings.slide_image | img_url: 'master' | img_tag: 'alt text', 'd-block w-100' }}
                         <div class="container">
                             <h1>Un mundo de Smartphones y consolas</h1>
-                        </div>
+                        </div><!--/.container-->
                     </div><!-- /item -->
             {% endcase %}
         {% else %}
@@ -33,7 +33,7 @@
                     {{ 'slide1.jpg' | asset_url | img_tag: '','d-block w-100' }}
                     <div class="container">
                         <h1>Un mundo de Smartphones y consolas</h1>
-                    </div>
+                    </div><!--/.container-->
                 </div><!--/.item-->
             {% endfor %}
         {% endfor %}

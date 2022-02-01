@@ -40,22 +40,7 @@
       "type_body_font": "quattrocento_sans_n4",
       "sections": {
         "footer": {
-          "type": "footer",
-          "settings": {
-            "color_scheme": "accent-1"
-          },
-          "blocks": {
-            "menu": {
-              "type": "link_list"
-            },
-            "text": {
-              "type": "text"
-            }
-          },
-          "block_order": [
-            "menu",
-            "text"
-          ]
+          "type": "footer"
         }
       }
     }

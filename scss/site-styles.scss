@@ -4,6 +4,7 @@
 * {
     border-radius: 0 !important;
     font-family: 'Poppins', sans-serif;
+    transition: all 200ms ease-in-out;
 }
 
 p {
@@ -74,6 +75,10 @@ h3 {
     background-color: #07689F !important;
     color: #000;
     border-color: #07689F !important;
+}
+
+.text-info {
+    color: #07689F !important;
 }
 
 .btn:hover,
@@ -350,11 +355,61 @@ h3 {
     }
 }
 
-.hero-page {
+.hero-page,
+.wrapper-list-collection-heading {
 
     h1 {
         @include media(md-max) {
             font-size: 28px;
+        }
+    }
+}
+
+.wrapper-blog-articles  {
+
+    a {
+        text-decoration: none;
+        display: block;
+        height: 100%;
+
+        &:hover {
+            box-shadow: 0px 5px 20px 0px #35495829;
+        }
+
+        .blog-article {
+            height: 100%;
+
+            .img {
+                img {
+                    width: 100%;
+                    height: 230px;
+                    object-fit: cover;
+                    max-height: 230px;
+                }
+            }
+        }
+    }
+
+}
+
+article {
+    .image {
+        position: relative;
+        max-height: 500px;
+        
+        img {
+            height: 100%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        .container {
+            position: absolute;
+            margin: 0 auto;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
         }
     }
 }
@@ -411,3 +466,4 @@ footer {
         }
     }
 }
+// https://www.studioproper.com/blogs/proper-journal/get-to-know-iphone-13s-powerful-photography-features
