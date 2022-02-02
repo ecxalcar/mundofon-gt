@@ -27,7 +27,7 @@
 
 <div class="container mt-5">
   <div class="post-comments my-5 d-block">
-    <h5>{{ article.comments_count }} {{ article.comments_count | pluralize: 'Comentarios', 'Comentario' }}</h5>
+    <h5>{{ article.comments_count }} {{ article.comments_count | pluralize: 'Comentario', 'Comentarios' }}</h5>
     {% paginate article.comments by 5 %}
         {% for comment in article.comments %}
             <div class="card w-100 mb-3">
