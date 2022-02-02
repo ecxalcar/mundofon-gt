@@ -1,22 +1,5 @@
-{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
-    <h2 class="title title-wrapper--no-top-margin">{{ section.settings.heading | escape }}</h2>
+<div class="wrapper-form-contact">
+  <div class="container">
     {%- form 'contact', id: 'ContactForm' -%}
       {%- if form.posted_successfully? -%}
         <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
@@ -32,61 +15,101 @@
           </li>
         </ul>
       {%- endif -%}
-      <div class="contact__fields">
-        <div class="field">
-          <input class="field__input" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'templates.contact.form.name' | t }}">
-          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+      <div class="row">
+
+        <div class="col-md-6 mb-5">
+          <h2>Escríbenos, será un gusto atenderte para resolver cualquier duda que tengas</h2>
         </div>
-        <div class="field field--with-error">
-          <input
-            autocomplete="email"
-            type="email"
-            id="ContactForm-email"
-            class="field__input"
-            name="contact[email]"
-            spellcheck="false"
-            autocapitalize="off"
-            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-            aria-required="true"
-            {% if form.errors contains 'email' %}
-              aria-invalid="true"
-              aria-describedby="ContactForm-email-error"
-            {% endif %}
-            placeholder="{{ 'templates.contact.form.email' | t }}"
-          >
-          <label class="field__label" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} <span aria-hidden="true">*</span></label>
-          {%- if form.errors contains 'email' -%}
-            <small class="contact__field-error" id="ContactForm-email-error">
-              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-              <span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
-            </small>
-          {%- endif -%}
+
+        <div class="col-md-6 mb-4">
+          <div class="field mb-4">
+            <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+            <input class="field__input form-control" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'templates.contact.form.name' | t }}">
+          </div>
+
+          <div class="field field--with-error mb-4">
+            <label class="field__label" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} <span aria-hidden="true">*</span></label>
+            <input
+              autocomplete="email"
+              type="email"
+              id="ContactForm-email"
+              class="field__input form-control"
+              name="contact[email]"
+              spellcheck="false"
+              autocapitalize="off"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              aria-required="true"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="ContactForm-email-error"
+              {% endif %}
+              placeholder="{{ 'templates.contact.form.email' | t }}"
+            >
+            {%- if form.errors contains 'email' -%}
+              <small class="contact__field-error" id="ContactForm-email-error">
+                <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                <span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
+              </small>
+            {%- endif -%}
+          </div>
+
+          <div class="field mb-4">
+            <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
+            <input type="tel" id="ContactForm-phone" class="field__input form-control" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="{{ 'templates.contact.form.phone' | t }}">
+          </div>
+
+          <div class="field mb-4">
+            <label class="form__label field__label" for="ContactForm-body">{{ 'templates.contact.form.comment' | t }}</label>
+            <textarea
+              rows="10"
+              id="ContactForm-body"
+              class="text-area field__input form-control"
+              name="contact[{{ 'templates.contact.form.comment' | t }}]"
+              placeholder="{{ 'templates.contact.form.comment' | t }}"
+            >
+              {{- form.body -}}
+            </textarea>
+          </div>
+          <div class="contact__button">
+            <button type="submit" class="btn btn-info px-5 text-white">Enviar</button>
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <input type="tel" id="ContactForm-phone" class="field__input" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="{{ 'templates.contact.form.phone' | t }}">
-        <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
-      </div>
-      <div class="field">
-        <textarea
-          rows="10"
-          id="ContactForm-body"
-          class="text-area field__input"
-          name="contact[{{ 'templates.contact.form.comment' | t }}]"
-          placeholder="{{ 'templates.contact.form.comment' | t }}"
-        >
-          {{- form.body -}}
-        </textarea>
-        <label class="form__label field__label" for="ContactForm-body">{{ 'templates.contact.form.comment' | t }}</label>
-      </div>
-      <div class="contact__button">
-        <button type="submit" class="button">
-          {{ 'templates.contact.form.send' | t }}
-        </button>
-      </div>
+
+      </div><!--/.row-->
+
     {%- endform -%}
-  </div>
-</div>
+  </div><!--/.container-->
+</div><!--/.wrapper-form-contact-->
+
+<div class="social-media-banner my-5">
+  <div class="container">
+    <div class="featured-banner-wrapper p-4 p-md-5 bg-primary">
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-center">
+          <div class="description mb-4 mb-md-0">
+            <h2 class="">No olvides seguirnos en nuestras redes sociales.</h2>
+          </div><!--/.description-->
+        </div><!--/.col-->
+        <div class="col-md-6 align-self-center">
+          <div class="social-media d-flex justify-content-between align-items-center">
+						<div class="icon">
+							<a href="#0"><svg width="19" height="35" viewBox="0 0 19 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.7549 19.6875L18.7402 13.3533H12.5798V9.24287C12.5798 7.50996 13.4404 5.8208 16.1994 5.8208H19V0.42793C19 0.42793 16.4585 0 14.0286 0C8.9554 0 5.6393 3.03379 5.6393 8.52578V13.3533H0V19.6875H5.6393V35H12.5798V19.6875H17.7549Z" fill="#C4C4C4"/></svg></a>
+						</div>
+						<div class="icon">
+							<a href="#0"><svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.0033 7.55199C10.7468 7.55199 7.31344 11.1006 7.31344 15.5C7.31344 19.8994 10.7468 23.448 15.0033 23.448C19.2599 23.448 22.6933 19.8994 22.6933 15.5C22.6933 11.1006 19.2599 7.55199 15.0033 7.55199ZM15.0033 20.6672C12.2527 20.6672 10.0039 18.3499 10.0039 15.5C10.0039 12.6501 12.246 10.3328 15.0033 10.3328C17.7607 10.3328 20.0028 12.6501 20.0028 15.5C20.0028 18.3499 17.754 20.6672 15.0033 20.6672ZM24.8015 7.22688C24.8015 8.25756 23.9983 9.08072 23.0078 9.08072C22.0106 9.08072 21.2142 8.25064 21.2142 7.22688C21.2142 6.20311 22.0173 5.37303 23.0078 5.37303C23.9983 5.37303 24.8015 6.20311 24.8015 7.22688ZM29.8946 9.10839C29.7808 6.62507 29.232 4.42536 27.4718 2.61302C25.7184 0.80068 23.5901 0.23346 21.1874 0.108948C18.7111 -0.036316 11.2889 -0.036316 8.8126 0.108948C6.41662 0.226542 4.28834 0.793763 2.52817 2.6061C0.767987 4.41844 0.225878 6.61815 0.10541 9.10147C-0.0351366 11.6609 -0.0351366 19.3322 0.10541 21.8916C0.219186 24.3749 0.767987 26.5746 2.52817 28.387C4.28834 30.1993 6.40993 30.7665 8.8126 30.8911C11.2889 31.0363 18.7111 31.0363 21.1874 30.8911C23.5901 30.7735 25.7184 30.2062 27.4718 28.387C29.2253 26.5746 29.7741 24.3749 29.8946 21.8916C30.0351 19.3322 30.0351 11.6678 29.8946 9.10839ZM26.6955 24.6378C26.1735 25.9936 25.1629 27.0381 23.8444 27.5846C21.8701 28.3939 17.1852 28.2071 15.0033 28.2071C12.8215 28.2071 8.12995 28.387 6.1623 27.5846C4.85053 27.045 3.83993 26.0005 3.31121 24.6378C2.52817 22.5972 2.70887 17.755 2.70887 15.5C2.70887 13.245 2.53486 8.39591 3.31121 6.36221C3.83324 5.00642 4.84384 3.9619 6.1623 3.41543C8.13664 2.6061 12.8215 2.79287 15.0033 2.79287C17.1852 2.79287 21.8767 2.61302 23.8444 3.41543C25.1562 3.95498 26.1668 4.9995 26.6955 6.36221C27.4785 8.40282 27.2978 13.245 27.2978 15.5C27.2978 17.755 27.4785 22.6041 26.6955 24.6378Z" fill="#C4C4C4"/></svg></a>
+						</div>
+						<div class="icon">
+							<a href="#0"><svg width="35" height="29" viewBox="0 0 35 29" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M31.4024 7.22732C31.4246 7.54449 31.4246 7.86173 31.4246 8.1789C31.4246 17.8531 24.207 29 11.0153 29C6.95115 29 3.17578 27.7992 0 25.7149C0.577434 25.7828 1.13258 25.8055 1.73223 25.8055C5.08562 25.8055 8.1726 24.65 10.6377 22.6789C7.48415 22.6109 4.84137 20.5039 3.93082 17.6039C4.37502 17.6718 4.81915 17.7172 5.28557 17.7172C5.92958 17.7172 6.57367 17.6265 7.17325 17.468C3.88645 16.7882 1.42127 13.843 1.42127 10.2859V10.1953C2.37618 10.7391 3.48668 11.0789 4.66363 11.1242C2.73151 9.8101 1.4657 7.56716 1.4657 5.02964C1.4657 3.67029 1.82096 2.42419 2.44283 1.33668C5.97395 5.77731 11.2817 8.67726 17.2335 8.9945C17.1224 8.45075 17.0558 7.8844 17.0558 7.31798C17.0558 3.28512 20.2538 0 24.229 0C26.2944 0 28.1599 0.883592 29.4702 2.31094C31.0913 1.99376 32.6459 1.38202 34.0229 0.543754C33.4898 2.24301 32.3572 3.67036 30.8693 4.57654C32.3129 4.41803 33.712 4.01012 35 3.44377C34.023 4.89372 32.8015 6.18507 31.4024 7.22732Z" fill="#C4C4C4"/></svg></a>
+						</div>
+						<div class="icon">
+							<a href="#0"><svg width="37" height="25" viewBox="0 0 37 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.2268 3.91165C35.8013 2.37194 34.5476 1.15931 32.9557 0.747786C30.0702 0 18.5 0 18.5 0C18.5 0 6.92984 0 4.04434 0.747786C2.45244 1.15937 1.19868 2.37194 0.773151 3.91165C0 6.70247 0 12.5253 0 12.5253C0 12.5253 0 18.348 0.773151 21.1389C1.19868 22.6786 2.45244 23.8407 4.04434 24.2522C6.92984 25 18.5 25 18.5 25C18.5 25 30.0702 25 32.9557 24.2522C34.5476 23.8407 35.8013 22.6786 36.2268 21.1389C37 18.348 37 12.5253 37 12.5253C37 12.5253 37 6.70247 36.2268 3.91165ZM14.7159 17.8119V7.23861L24.3863 12.5254L14.7159 17.8119Z" fill="#C4C4C4"/></svg></a>
+						</div>
+					</div><!--/.social-media-->
+        </div><!-- /col -->
+      </div><!-- /row -->
+    </div><!-- /featured-banner-wrapper -->
+  </div><!-- /container -->
+</div><!--/.social-media-banner-->
 
 {% schema %}
 {
