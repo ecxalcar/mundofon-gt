@@ -26,15 +26,15 @@ h1 {
       font-size: 16px; } }
 
 h2 {
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 500;
   margin: 0; }
   @media screen and (max-width: 991px) {
     h2 {
-      font-size: 32px; } }
+      font-size: 30px; } }
   @media screen and (max-width: 767px) {
     h2 {
-      font-size: 28px; } }
+      font-size: 24px; } }
 
 h3 {
   font-size: 20px;
@@ -325,6 +325,34 @@ h3 {
   text-decoration: none; }
   .article-tags div a:hover {
     text-decoration: underline; }
+
+.search-results-content a {
+  text-decoration: none;
+  position: relative; }
+  .search-results-content a:hover {
+    text-decoration: underline;
+    -webkit-box-shadow: 0px 5px 20px 0px #35495829;
+            box-shadow: 0px 5px 20px 0px #35495829; }
+  .search-results-content a .post-type {
+    position: absolute;
+    top: 10px;
+    left: 10px; }
+
+.not-found-content {
+  position: relative; }
+  .not-found-content .description {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+
+.shopify-payment-button__button {
+  border: 1px solid #07689F;
+  padding: 10px;
+  font-size: 17px !important;
+  min-height: auto !important;
+  font-family: inherit !important; }
 
 article .image {
   position: relative;

@@ -1,23 +1,10 @@
-<style type="text/css">
-  .template-404 .title + * {
-    margin-top: 1rem;
-  }
-
-  @media screen and (min-width: 750px) {
-    .template-404 .title + * {
-      margin-top: 2rem;
-    }
-  }
-</style>
-
-<div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
-  <h1 class="title">
-    {{ 'templates.404.title' | t }}
-  </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
-    {{ 'general.continue_shopping' | t }}
-  </a>
-</div>
+<div class="not-found-content">
+  {{ '404.jpg' | asset_url | img_tag: '','d-block w-100' }}
+  <div class="container text-center">
+    <div class="description">
+      <h1>404</h1>
+      <h2>Página no encontrda!</h2>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn-info px-5 text-white mt-3">Continúa comprando</a>
+    </div>
+  </div><!--/.container-->
+</div><!--/.404-container-->

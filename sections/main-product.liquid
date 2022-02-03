@@ -1,6 +1,58 @@
-<div class="hero-product">
-  
-</div>
+<div class="container my-5">
+  <div class="row mb-5">
+      <div class="col-md-7">
+          <div class="featured-image-primary mb-4">
+              <a href="{{ product.featured_image | img_url: 'master' }}" data-lightbox="product" data-title="{{ product.title }}" ><img src="{{ product.featured_image | img_url: 'master' }}" class="w-100" alt=""></a>
+          </div><!-- /featured-image-primary -->
+          <div class="featured-image-secondary">
+              <div class="row">
+                  {% for image in product.images offset: 1 %}
+                      <div class="col-12 col-sm-6 col-md-3 mb-4">
+                          <a href="{{ image | img_url: 'master' }}" data-lightbox="product" data-title="{{ product.title }}" ><img src="{{ image | img_url: 'master' }}" class="w-100" alt=""></a>
+                      </div>
+                  {% endfor %}
+              </div><!-- /row -->
+          </div><!-- /featured-image-secondary -->
+      </div><!-- /col -->
+      <div class="col-md-5">
+          <div class="badge badge-pill bg-info text-white">{{ product.vendor }}</div>
+          <strong><h2 class="my-4">{{ product.title }}</h2></strong>
+          {% if product.compare_at_price != blank %}
+              <p>Precio Normal: <del class="text-muted">{{ product.compare_at_price | money_with_currency }}</del> </p>
+          {% endif %}
+          <p>{% if product.compare_at_price != blank %}Offer: {% else %} Price: {% endif %} <strong>{{ product.price | money_with_currency }}</strong> </p>
+          {% form 'product', product %}
+              <div class="quantity-product">
+                  
+                  {% if product.variants.size > 1 %}
+                      <p>Variants:</p>
+                      <select name="id" id="" class="form-control mb-1">
+                          {% for variant in product.variants %}
+                              <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}>{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+                          {% endfor %}
+                      </select>
+                  {% else %}
+                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  {% endif %}
+
+                  <div class="input-group mt-4" style="max-width: 200px;">
+                      <button type="button" class="btn btn-secondary form-control btn-decrease">-</button>
+                      <input type="text" name="quantity" value="1" class="form-control input-group-text quantity">
+                      <button type="button" class="btn btn-secondary form-control btn-increase">+</button>
+                  </div>
+                  <div class="product-ctas mt-1">
+                      <input type="submit" class="btn btn-primary w-100 mt-4 mb-3 text-dark" value="Add to Cart">
+                      {{ form | payment_button }}
+                  </div>
+              </div>
+          {% endform %}
+          <div class="description mt-4">
+              <p>{{ product.description }}</p>
+          </div>
+      </div><!-- /col -->
+  </div><!-- /row -->
+</div><!-- /container -->
+
 {% comment %}theme-check-disable TemplateLength{% endcomment %}
 {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
 {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
