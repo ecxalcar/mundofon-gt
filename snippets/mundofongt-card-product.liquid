@@ -1,7 +1,12 @@
-<div class="product-card product-card">
+<div class="product-card">
     <a href="#0">
         <div class="img-wrapper mb-4">
+            {% if product.featured_media == blank %}
             {{ 'product2.png' | asset_url | img_tag: '','d-block' }}
+            {% else %}
+            {{ 'product-5' | placeholder_svg_tag }}
+            <!-- {{ product.featured_media | img_url: 'master' | img_tag: 'card-img-top' }} -->
+            {% endif %}
         </div><!-- /img -->
         <div class="description">
             <p>CONSOLA XBOX ONE SERIES X 1TB NEGRO (CARBON BLACK)</p>

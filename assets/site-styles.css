@@ -352,7 +352,34 @@ h3 {
   padding: 10px;
   font-size: 17px !important;
   min-height: auto !important;
-  font-family: inherit !important; }
+  font-family: inherit !important;
+  line-height: normal !important;
+  font-family: 'Poppins', sans-serif !important; }
+
+.glider-related-products-prev,
+.glider-related-products-next {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: relative;
+  left: auto;
+  right: auto;
+  border: 0;
+  -webkit-transition: opacity 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67), color 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transition: opacity 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67), color 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
+
+.button-slider .glider-related-products-prev {
+  top: 0;
+  left: auto;
+  right: 0; }
+
+.glider-dot.active {
+  background: #07689F; }
+
+.glider-related-products-prev.disabled,
+.glider-related-products-next.disabled {
+  opacity: .25;
+  cursor: default; }
 
 article .image {
   position: relative;

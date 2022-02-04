@@ -1,196 +1,90 @@
-<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-product-grid.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'section-product-recommendations.css' | asset_url }}" media="print" onload="this.media='all'">
-
-<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'component-product-grid.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'section-product-recommendations.css' | asset_url | stylesheet_tag }}</noscript>
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <product-recommendations class="product-recommendations page-width section-{{ section.id }}-padding" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4">
-    {% if recommendations.performed and recommendations.products_count > 0 %}
-      <h2 class="product-recommendations__heading">{{ section.settings.heading | escape }}</h2>
-      <ul class="grid grid--2-col product-grid{% if recommendations.products_count > 3 %} grid--4-col-desktop grid--quarter-max{% else %} grid--{{ recommendations.products_count }}-col-tablet{% endif %}" role="list">
-        {% for recommendation in recommendations.products %}
-          <li class="grid__item">
-            {% render 'card-product',
-              card_product: recommendation,
-              media_aspect_ratio: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating
-            %}
-          </li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  </product-recommendations>
+<div class="related-products-section">
+  <div class="container py-5">
+      <h2 class="py-5 text-center">Related Products</h2>
+  
+      <div class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=8">
+          <div class="button-slider mb-1">
+              <button aria-label="Previous" class="glider-related-products-prev bg-info ms-3"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" color="white" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg></button>
+              <button aria-label="Next" class="glider-related-products-next bg-info ms-3"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" class="svg-inline--fa fa-chevron-right fa-w-10" color="white" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg></button>
+          </div><!--/.button-slider-->
+          <div class="glider-recommendations">
+              {% if recommendations.performed and recommendations.products_count > 0 %}
+                  {% for product in recommendations.products %}
+                      {% render 'mundofongt-card-product' %}
+                  {% endfor %}
+              {% endif %}
+          </div><!-- /.glider-recommendations -->
+          <div class="related-products-dots"></div>
+      </div><!-- /product-recommendations -->
+  </div><!-- /container -->
 </div>
 
-{% javascript %}
-  class ProductRecommendations extends HTMLElement {
-    constructor() {
-      super();
+<script>
+  window.addEventListener('load', function() {
 
       const handleIntersection = (entries, observer) => {
-        if (!entries[0].isIntersecting) return;
-        observer.unobserve(this);
+          if ( !entries[0].isIntersecting ) return;
 
-        fetch(this.dataset.url)
-          .then(response => response.text())
+          observer.unobserve(productRecommendationsSection);
+          const url = productRecommendationsSection.dataset.url;
+
+          fetch(url)
+          .then(response => response.text() )
           .then(text => {
-            const html = document.createElement('div');
-            html.innerHTML = text;
-            const recommendations = html.querySelector('product-recommendations');
+              const html = document.createElement('div');
+              html.innerHTML = text;
+              const recommendations = html.querySelector('.product-recommendations');
 
-            if (recommendations && recommendations.innerHTML.trim().length) {
-              this.innerHTML = recommendations.innerHTML;
-            }
+              if(recommendations && recommendations.innerHTML.trim().length) {
+                  productRecommendationsSection.innerHTML = recommendations.innerHTML;
 
-            if (html.querySelector('.grid__item')) {
-              this.classList.add('product-recommendations--loaded');
-            }
-          })
+                  new Glider(document.querySelector('.glider-recommendations'), {
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                      draggable: false,
+                      dots: '.related-products-dots',
+                      duration: 0.90,
+                      itemWidth: 150,
+
+                      arrows: {
+                          prev: '.glider-related-products-prev',
+                          next: '.glider-related-products-next'
+                      },
+                      responsive: [
+                          {
+                              breakpoint: 576,
+                              settings: {
+                              slidesToShow: 2,
+                              slidesToScroll: 1
+                              }
+                          },
+                          {
+                              breakpoint: 768,
+                              settings: {
+                              slidesToShow: 3,
+                              slidesToScroll: 1
+                              }
+                          },
+                          {
+                              breakpoint: 1024,
+                              settings: {
+                              slidesToShow: 4,
+                              slidesToScroll: 1
+                              }
+                          }
+                      ]
+                  });
+
+              }
+          } )
           .catch(e => {
-            console.error(e);
+              console.error(e);
           });
       }
 
-      new IntersectionObserver(handleIntersection.bind(this), {rootMargin: '0px 0px 200px 0px'}).observe(this);
-    }
-  }
+      const productRecommendationsSection = document.querySelector('.product-recommendations');
+      const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 200px 0px' });
+      observer.observe(productRecommendationsSection);
 
-  customElements.define('product-recommendations', ProductRecommendations);
-{% endjavascript %}
-
-{% schema %}
-{
-  "name": "t:sections.product-recommendations.name",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    {
-      "type": "paragraph",
-      "content": "t:sections.product-recommendations.settings.paragraph__1.content"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "default": "You may also like",
-      "label": "t:sections.product-recommendations.settings.heading.label"
-    },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "t:sections.all.colors.accent_1.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.all.colors.accent_2.label"
-        },
-        {
-          "value": "background-1",
-          "label": "t:sections.all.colors.background_1.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.all.colors.background_2.label"
-        },
-        {
-          "value": "inverse",
-          "label": "t:sections.all.colors.inverse.label"
-        }
-      ],
-      "default": "background-1",
-      "label": "t:sections.all.colors.label",
-      "info": "t:sections.all.colors.has_cards_info"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.product-recommendations.settings.header__2.content"
-    },
-    {
-      "type": "select",
-      "id": "image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.product-recommendations.settings.image_ratio.options__1.label"
-        },
-        {
-          "value": "portrait",
-          "label": "t:sections.product-recommendations.settings.image_ratio.options__2.label"
-        },
-        {
-          "value": "square",
-          "label": "t:sections.product-recommendations.settings.image_ratio.options__3.label"
-        }
-      ],
-      "default": "adapt",
-      "label": "t:sections.product-recommendations.settings.image_ratio.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_secondary_image",
-      "default": false,
-      "label": "t:sections.product-recommendations.settings.show_secondary_image.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_vendor",
-      "default": false,
-      "label": "t:sections.product-recommendations.settings.show_vendor.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_rating",
-      "default": false,
-      "label": "t:sections.product-recommendations.settings.show_rating.label",
-      "info": "t:sections.product-recommendations.settings.show_rating.info"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ]
-}
-{% endschema %}
+  });
+</script>
