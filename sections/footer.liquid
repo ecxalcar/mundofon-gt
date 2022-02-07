@@ -27,14 +27,13 @@
 					</div><!--/.social-media-->
 				</div><!--/.col-->
 				<div class="col-md-6 col-lg-2 mb-4">
-
 					<h3>Información</h3>
 					<ul>
 						{% for link in linklists.footer-informacion.links %}
 							<li><a href="{{ link.url }}" > {{ link.title }} </a></li>
 						{% endfor %}
 					</ul>
-				</div>
+				</div><!--/.col-->
 				<div class="col-md-6 col-lg-2 mb-4">
 					<h3>Contacto</h3>
 					<ul>
@@ -43,10 +42,9 @@
 						<li><a href="#0">PBX: 2214-4800</a></li>
 						<li><a href="#0">Contacto</a></li>
 					</ul>
-				</div>
-				
+				</div><!--/.col-->
 				<div class="col-md-6 col-lg-4">
-					<h3>Conoce promociones, nuevos productos y ofertas.</h3>
+					<h3>Conoce productos y ofertas.</h3>
 					{%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
 						<input type="hidden" name="contact[tags]" value="newsletter">
 						<div class="newsletter-form__field-wrapper">
@@ -81,12 +79,8 @@
 							<h3 class="newsletter-form__message newsletter-form__message--success form__message" id="ContactFooter-success" tabindex="-1" autofocus>{% render 'icon-success' %}{{ 'newsletter.success' | t }}</h3>
 						{%- endif -%}
 					{%- endform -%}
-					
-				</div>
-
+				</div><!--/.col-->
 			</div><!--/.row-->
-
 		</div><!-- /container -->
 	</div><!-- /footer-wrapper -->
-
 </footer>

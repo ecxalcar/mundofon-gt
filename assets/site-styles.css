@@ -97,6 +97,9 @@ h3 {
 .show {
   color: #fff !important; }
 
+.navbar-toggler-icon {
+  width: 27px; }
+
 .search-container {
   max-width: 500px;
   margin: 0 auto; }
@@ -381,6 +384,16 @@ h3 {
   opacity: .25;
   cursor: default; }
 
+.delete-item svg {
+  width: 20px; }
+
+.bg-cover {
+  background-size: cover; }
+
+.bg-form {
+  height: 100vh;
+  background-position: center center; }
+
 article .image {
   position: relative;
   max-height: 500px; }
@@ -398,33 +411,33 @@ article .image {
             transform: translateX(-50%);
     background: white; }
 
-footer {
-  margin-top: 100px; }
-  footer .footer-wrapper {
-    background-color: #000; }
-    footer .footer-wrapper h3 {
-      color: #fff;
-      margin-bottom: 15px; }
-    footer .footer-wrapper ul {
-      list-style: none;
-      margin: 0;
-      padding: 0; }
-      footer .footer-wrapper ul li a {
-        text-decoration: none;
-        color: #fff;
-        margin-bottom: 10px;
-        display: block;
-        font-size: 14px; }
-        footer .footer-wrapper ul li a:hover {
-          text-decoration: underline; }
-  footer .footer-copyright small, footer .footer-copyright small a {
+footer .footer-wrapper {
+  background-color: #000; }
+  footer .footer-wrapper h3 {
     color: #fff;
-    text-decoration: none; }
-  footer .social-media {
-    max-width: 200px; }
-    footer .social-media .icon svg {
-      max-width: 30px;
-      max-height: 26px; }
-      footer .social-media .icon svg path {
-        fill: #ffffff; }
+    margin-bottom: 15px; }
+  footer .footer-wrapper ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    footer .footer-wrapper ul li a {
+      text-decoration: none;
+      color: #fff;
+      margin-bottom: 10px;
+      display: block;
+      font-size: 14px; }
+      footer .footer-wrapper ul li a:hover {
+        text-decoration: underline; }
+
+footer .footer-copyright small, footer .footer-copyright small a {
+  color: #fff;
+  text-decoration: none; }
+
+footer .social-media {
+  max-width: 200px; }
+  footer .social-media .icon svg {
+    max-width: 30px;
+    max-height: 26px; }
+    footer .social-media .icon svg path {
+      fill: #ffffff; }
 /*# sourceMappingURL=site-styles.css.map */

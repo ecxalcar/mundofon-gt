@@ -125,6 +125,10 @@ h3 {
     color: #fff !important;
 }
 
+.navbar-toggler-icon {
+    width: 27px;
+}
+
 .search-container {
     max-width: 500px;
     margin: 0 auto;
@@ -477,6 +481,21 @@ h3 {
     cursor: default;
 }
 
+.delete-item {
+    svg {
+        width: 20px;
+    }
+}
+
+.bg-cover {
+    background-size: cover;
+}
+
+.bg-form {
+    height: 100vh;
+    background-position: center center;
+}
+
 article {
     .image {
         position: relative;
@@ -500,7 +519,7 @@ article {
 }
 
 footer {
-    margin-top: 100px;
+    // margin-top: 100px;
     
     .footer-wrapper {
         background-color: #000;
