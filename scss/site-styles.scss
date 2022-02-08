@@ -120,8 +120,7 @@ h3 {
 }
 
 .nav-link, 
-.dropdown-toggle, 
-.show {
+.dropdown-toggle {
     color: #fff !important;
 }
 
@@ -431,7 +430,6 @@ h3 {
     }
 }
 
-
 .not-found-content {
     position: relative;
 
@@ -496,6 +494,21 @@ h3 {
     background-position: center center;
 }
 
+.customer-account {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+
+    a svg {
+        width: 1.5rem;
+        margin-bottom: -0.03rem;
+        margin-right: 5px;
+    }
+}
+
+.btn-account {
+    color: #000 !important;
+}
+
 article {
     .image {
         position: relative;
@@ -519,7 +532,6 @@ article {
 }
 
 footer {
-    // margin-top: 100px;
     
     .footer-wrapper {
         background-color: #000;
@@ -569,5 +581,10 @@ footer {
             }
         }
     }
+
+    .newsletter-form__message  {
+        svg {
+            width: 30px;
+        }
+    }
 }
-// https://www.studioproper.com/blogs/proper-journal/get-to-know-iphone-13s-powerful-photography-features

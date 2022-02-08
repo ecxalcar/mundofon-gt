@@ -1,138 +1,33 @@
 <div class="wrapper-blog-heading py-5 bg-info">
-  <div class="container">
-    <h1 class="text-center text-white">{{ blog.title }}</h1>
-  </div><!--/.container-->
+	<div class="container">
+		<h1 class="text-center text-white">{{ blog.title }}</h1>
+	</div><!--/.container-->
 </div><!--/.wrapper-list-collection-->
 
-
 {% paginate blog.articles by 2 %}
-    <div class="wrapper-blog-articles my-5">
-      <div class="container">
-        <div class="row">
-          {% for article in blog.articles %}
-          <div class="col-md-6 col-lg-4 mb-4">
-            <a href="{{ article.url }}">
-              <div class="blog-article bg-primary">
-                <div class="img">
-                  {{ article.image | img_url: 'master' | img_tag: '','' }}
-                </div>
-                <div class="description p-3">
-                  <div class="title mb-3"> <strong><h3 class="text-info">{{ article.title }}</h3></strong></div>
-                  <div class="excerpt w-100"><p>{{ article.excerpt_or_content | strip_html | truncatewords: 10, '...' }}</p></div>
-                </div><!--/.description-->
-              </div><!--/.blog-article-->
-            </a>
-          </div><!--/.col-->
-          {% endfor %}
-        </div><!--/.row-->
+		<div class="wrapper-blog-articles my-5">
+			<div class="container">
+				<div class="row">
+					{% for article in blog.articles %}
+					<div class="col-md-6 col-lg-4 mb-4">
+						<a href="{{ article.url }}">
+							<div class="blog-article bg-primary">
+								<div class="img">
+									{{ article.image | img_url: 'master' | img_tag: '','' }}
+								</div>
+								<div class="description p-3">
+									<div class="title mb-3"> <strong><h3 class="text-info">{{ article.title }}</h3></strong></div>
+									<div class="excerpt w-100"><p>{{ article.excerpt_or_content | strip_html | truncatewords: 10, '...' }}</p></div>
+								</div><!--/.description-->
+							</div><!--/.blog-article-->
+						</a>
+					</div><!--/.col-->
+					{% endfor %}
+				</div><!--/.row-->
 
-        {%- if paginate.pages > 1 -%}
-        {%- render 'pagination', paginate: paginate -%}
-        {%- endif -%}
-      </div><!--/.container-->
-  </div><!--/.wrapper-blog-articles-->
+				{%- if paginate.pages > 1 -%}
+				{%- render 'pagination', paginate: paginate -%}
+				{%- endif -%}
+			</div><!--/.container-->
+	</div><!--/.wrapper-blog-articles-->
 {%- endpaginate -%}
-
-{% schema %}
-{
-  "name": "t:sections.main-blog.name",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    {
-      "type": "header",
-      "content": "t:sections.main-blog.settings.header.content"
-    },
-    {
-      "type": "select",
-      "id": "layout",
-      "options": [
-        {
-          "value": "grid",
-          "label": "t:sections.main-blog.settings.layout.options__1.label"
-        },
-        {
-          "value": "collage",
-          "label": "t:sections.main-blog.settings.layout.options__2.label"
-        }
-      ],
-      "default": "collage",
-      "label": "t:sections.main-blog.settings.layout.label",
-      "info": "t:sections.main-blog.settings.layout.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_image",
-      "default": true,
-      "label": "t:sections.main-blog.settings.show_image.label"
-    },
-    {
-      "type": "select",
-      "id": "image_height",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.main-blog.settings.image_height.options__1.label"
-        },
-        {
-          "value": "small",
-          "label": "t:sections.main-blog.settings.image_height.options__2.label"
-        },
-        {
-          "value": "medium",
-          "label": "t:sections.main-blog.settings.image_height.options__3.label"
-        },
-        {
-          "value": "large",
-          "label": "t:sections.main-blog.settings.image_height.options__4.label"
-        }
-      ],
-      "default": "medium",
-      "label": "t:sections.main-blog.settings.image_height.label",
-      "info": "t:sections.main-blog.settings.image_height.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_date",
-      "default": true,
-      "label": "t:sections.main-blog.settings.show_date.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_author",
-      "default": false,
-      "label": "t:sections.main-blog.settings.show_author.label"
-    },
-    {
-      "type": "paragraph",
-      "content": "t:sections.main-blog.settings.paragraph.content"
-    },
-
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ]
-}
-{% endschema %}
-

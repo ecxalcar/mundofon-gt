@@ -1,97 +1,97 @@
 <div class="wrapper-form-contact">
-  <div class="container">
-    {%- form 'contact', id: 'ContactForm' -%}
-      {%- if form.posted_successfully? -%}
-        <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
-      {%- elsif form.errors -%}
-        <div class="form__message">
-          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}</h2>
-        </div>
-        <ul class="form-status-list caption-large" role="list">
-          <li>
-            <a href="#ContactForm-email" class="link">
-              {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
-            </a>
-          </li>
-        </ul>
-      {%- endif -%}
-      <div class="row">
+	<div class="container">
+		{%- form 'contact', id: 'ContactForm' -%}
+			{%- if form.posted_successfully? -%}
+				<div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
+			{%- elsif form.errors -%}
+				<div class="form__message">
+					<h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}</h2>
+				</div>
+				<ul class="form-status-list caption-large" role="list">
+					<li>
+						<a href="#ContactForm-email" class="link">
+							{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+						</a>
+					</li>
+				</ul>
+			{%- endif -%}
+			<div class="row">
 
-        <div class="col-md-6 mb-5">
-          <h2>Escríbenos, será un gusto atenderte para resolver cualquier duda que tengas</h2>
-        </div>
+				<div class="col-md-6 mb-5">
+					<h2>Escríbenos, será un gusto atenderte para resolver cualquier duda que tengas</h2>
+				</div>
 
-        <div class="col-md-6 mb-4">
-          <div class="field mb-4">
-            <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
-            <input class="field__input form-control" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'templates.contact.form.name' | t }}">
-          </div>
+				<div class="col-md-6 mb-4">
+					<div class="field mb-4">
+						<label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+						<input class="field__input form-control" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'templates.contact.form.name' | t }}">
+					</div>
 
-          <div class="field field--with-error mb-4">
-            <label class="field__label" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} <span aria-hidden="true">*</span></label>
-            <input
-              autocomplete="email"
-              type="email"
-              id="ContactForm-email"
-              class="field__input form-control"
-              name="contact[email]"
-              spellcheck="false"
-              autocapitalize="off"
-              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-              aria-required="true"
-              {% if form.errors contains 'email' %}
-                aria-invalid="true"
-                aria-describedby="ContactForm-email-error"
-              {% endif %}
-              placeholder="{{ 'templates.contact.form.email' | t }}"
-            >
-            {%- if form.errors contains 'email' -%}
-              <small class="contact__field-error" id="ContactForm-email-error">
-                <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-                <span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
-              </small>
-            {%- endif -%}
-          </div>
+					<div class="field field--with-error mb-4">
+						<label class="field__label" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} <span aria-hidden="true">*</span></label>
+						<input
+							autocomplete="email"
+							type="email"
+							id="ContactForm-email"
+							class="field__input form-control"
+							name="contact[email]"
+							spellcheck="false"
+							autocapitalize="off"
+							value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+							aria-required="true"
+							{% if form.errors contains 'email' %}
+								aria-invalid="true"
+								aria-describedby="ContactForm-email-error"
+							{% endif %}
+							placeholder="{{ 'templates.contact.form.email' | t }}"
+						>
+						{%- if form.errors contains 'email' -%}
+							<small class="contact__field-error" id="ContactForm-email-error">
+								<span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+								<span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
+							</small>
+						{%- endif -%}
+					</div>
 
-          <div class="field mb-4">
-            <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
-            <input type="tel" id="ContactForm-phone" class="field__input form-control" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="{{ 'templates.contact.form.phone' | t }}">
-          </div>
+					<div class="field mb-4">
+						<label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
+						<input type="tel" id="ContactForm-phone" class="field__input form-control" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="{{ 'templates.contact.form.phone' | t }}">
+					</div>
 
-          <div class="field mb-4">
-            <label class="form__label field__label" for="ContactForm-body">{{ 'templates.contact.form.comment' | t }}</label>
-            <textarea
-              rows="10"
-              id="ContactForm-body"
-              class="text-area field__input form-control"
-              name="contact[{{ 'templates.contact.form.comment' | t }}]"
-              placeholder="{{ 'templates.contact.form.comment' | t }}"
-            >
-              {{- form.body -}}
-            </textarea>
-          </div>
-          <div class="contact__button">
-            <button type="submit" class="btn btn-info px-5 text-white">Enviar</button>
-          </div>
-        </div>
+					<div class="field mb-4">
+						<label class="form__label field__label" for="ContactForm-body">{{ 'templates.contact.form.comment' | t }}</label>
+						<textarea
+							rows="10"
+							id="ContactForm-body"
+							class="text-area field__input form-control"
+							name="contact[{{ 'templates.contact.form.comment' | t }}]"
+							placeholder="{{ 'templates.contact.form.comment' | t }}"
+						>
+							{{- form.body -}}
+						</textarea>
+					</div>
+					<div class="contact__button">
+						<button type="submit" class="btn btn-info px-5 text-white">Enviar</button>
+					</div>
+				</div>
 
-      </div><!--/.row-->
+			</div><!--/.row-->
 
-    {%- endform -%}
-  </div><!--/.container-->
+		{%- endform -%}
+	</div><!--/.container-->
 </div><!--/.wrapper-form-contact-->
 
 <div class="social-media-banner my-5">
-  <div class="container">
-    <div class="featured-banner-wrapper p-4 p-md-5 bg-primary">
-      <div class="row">
-        <div class="col-md-6 d-flex align-items-center">
-          <div class="description mb-4 mb-md-0">
-            <h2 class="">No olvides seguirnos en nuestras redes sociales.</h2>
-          </div><!--/.description-->
-        </div><!--/.col-->
-        <div class="col-md-6 align-self-center">
-          <div class="social-media d-flex justify-content-between align-items-center">
+	<div class="container">
+		<div class="featured-banner-wrapper p-4 p-md-5 bg-primary">
+			<div class="row">
+				<div class="col-md-6 d-flex align-items-center">
+					<div class="description mb-4 mb-md-0">
+						<h2 class="">No olvides seguirnos en nuestras redes sociales.</h2>
+					</div><!--/.description-->
+				</div><!--/.col-->
+				<div class="col-md-6 align-self-center">
+					<div class="social-media d-flex justify-content-between align-items-center">
 						<div class="icon">
 							<a href="#0"><svg width="19" height="35" viewBox="0 0 19 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.7549 19.6875L18.7402 13.3533H12.5798V9.24287C12.5798 7.50996 13.4404 5.8208 16.1994 5.8208H19V0.42793C19 0.42793 16.4585 0 14.0286 0C8.9554 0 5.6393 3.03379 5.6393 8.52578V13.3533H0V19.6875H5.6393V35H12.5798V19.6875H17.7549Z" fill="#C4C4C4"/></svg></a>
 						</div>
@@ -105,81 +105,8 @@
 							<a href="#0"><svg width="37" height="25" viewBox="0 0 37 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.2268 3.91165C35.8013 2.37194 34.5476 1.15931 32.9557 0.747786C30.0702 0 18.5 0 18.5 0C18.5 0 6.92984 0 4.04434 0.747786C2.45244 1.15937 1.19868 2.37194 0.773151 3.91165C0 6.70247 0 12.5253 0 12.5253C0 12.5253 0 18.348 0.773151 21.1389C1.19868 22.6786 2.45244 23.8407 4.04434 24.2522C6.92984 25 18.5 25 18.5 25C18.5 25 30.0702 25 32.9557 24.2522C34.5476 23.8407 35.8013 22.6786 36.2268 21.1389C37 18.348 37 12.5253 37 12.5253C37 12.5253 37 6.70247 36.2268 3.91165ZM14.7159 17.8119V7.23861L24.3863 12.5254L14.7159 17.8119Z" fill="#C4C4C4"/></svg></a>
 						</div>
 					</div><!--/.social-media-->
-        </div><!-- /col -->
-      </div><!-- /row -->
-    </div><!-- /featured-banner-wrapper -->
-  </div><!-- /container -->
+				</div><!-- /col -->
+			</div><!-- /row -->
+		</div><!-- /featured-banner-wrapper -->
+	</div><!-- /container -->
 </div><!--/.social-media-banner-->
-
-{% schema %}
-{
-  "name": "t:sections.contact-form.name",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "default": "Contact form",
-      "label": "Heading"
-    },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "t:sections.all.colors.accent_1.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.all.colors.accent_2.label"
-        },
-        {
-          "value": "background-1",
-          "label": "t:sections.all.colors.background_1.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.all.colors.background_2.label"
-        },
-        {
-          "value": "inverse",
-          "label": "t:sections.all.colors.inverse.label"
-        }
-      ],
-      "default": "background-1",
-      "label": "t:sections.all.colors.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ],
-  "presets": [
-    {
-      "name": "t:sections.contact-form.presets.name"
-    }
-  ]
-}
-{% endschema %}

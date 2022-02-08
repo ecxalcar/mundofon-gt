@@ -33,28 +33,28 @@
       <section>
 				<div class="container">
 					<div class="row">
-						<div class="col-12 col-md-8 mx-auto">
+						<div class="col-12 col-md-8 mx-auto mt-5">
 							<div class="card-content bg-light border border-2 rounded-3 p-5">
-								<h2 class="text-center">Your Gift Card</h2>
+								<h2 class="text-center">Tu tarjeta de regalo</h2>
 								{{ 'gift-card.png' | asset_url | img_tag: '','w-100' }}
 								<div class="text-center">
 									<h3>Hey {{ gift_card.customer.first_name }}!</h3>
 									{% if gift_card.enabled %}
-										<h6>This card is currently enable</h6>
+										<h6>Esta tarjeta de regalo está disponile actualmente.</h6>
 									{% else %}
-										<h6>This card is currently disable</h6>
+										<h6>Esta tarjeta está deshabilitada actualmente.</h6>
 									{% endif %}
 								</div><!-- /text-center -->
 
 								<div class="row">
 									<div class="col-md-6 mt-4">
-										<h6><strong>This card expires on: </strong>{{ gift_card.expires_on | date: '%b %d %Y' }}</h6>
-										<h6><strong>Balance: </strong>{{ gift_card.balance | money_with_currency }}</h6>
-										<h6><strong>Code: </strong>{{ gift_card.code }}</h6>
+										<h6><strong>Expira en: </strong>{{ gift_card.expires_on | date: '%b %d %Y' }}</h6>
+										<h6><strong>Cantidad: </strong>{{ gift_card.balance | money_with_currency }}</h6>
+										<h6><strong>Código de la tarjeta: </strong>{{ gift_card.code }}</h6>
 										{% if gift_card.expired %}
-											<h6>This card already expired</h6>
+											<h6>Esta tarjeta de regalo ha expirado :(</h6>
 										{% else %}
-											<h6>This card hasn't expired yet.</h6>
+											<h6>Esta tarjeta de regalo no ha expirado :)</h6>
 										{% endif %}
 									</div><!-- /col -->
 									<div class="col-md-6">

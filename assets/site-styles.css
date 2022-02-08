@@ -93,8 +93,7 @@ h3 {
     color: #000; }
 
 .nav-link,
-.dropdown-toggle,
-.show {
+.dropdown-toggle {
   color: #fff !important; }
 
 .navbar-toggler-icon {
@@ -394,6 +393,17 @@ h3 {
   height: 100vh;
   background-position: center center; }
 
+.customer-account {
+  margin-top: 0 !important;
+  padding-top: 0 !important; }
+  .customer-account a svg {
+    width: 1.5rem;
+    margin-bottom: -0.03rem;
+    margin-right: 5px; }
+
+.btn-account {
+  color: #000 !important; }
+
 article .image {
   position: relative;
   max-height: 500px; }
@@ -440,4 +450,7 @@ footer .social-media {
     max-height: 26px; }
     footer .social-media .icon svg path {
       fill: #ffffff; }
+
+footer .newsletter-form__message svg {
+  width: 30px; }
 /*# sourceMappingURL=site-styles.css.map */

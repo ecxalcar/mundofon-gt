@@ -7,39 +7,29 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
     {%- endif -%}
-
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
-
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
-
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
-
     {% render 'meta-tags' %}
-
     <!-- <script src="{{ 'global.js' | asset_url }}" defer="defer"></script> -->
     {{ content_for_header }}
-
-
-    <!-- {{ 'base.css' | asset_url | stylesheet_tag }} -->
 
     <!-- MY STYLES -->
     {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
     {{ 'glider.min.css' | asset_url | stylesheet_tag }}
     {{ 'site-styles.css' | asset_url | stylesheet_tag }}
-
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     if (Shopify.designMode) {
@@ -53,8 +43,6 @@
       {{ "accessibility.skip_to_text" | t }}
     </a>
 
-    {% section 'mundofongt-announcement-bar' %}
-    <!-- {% section 'announcement-bar' %} -->
     {% section 'header' %}
   
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">

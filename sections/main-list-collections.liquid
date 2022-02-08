@@ -1,74 +1,26 @@
 <div class="wrapper-list-collection-heading py-5 bg-info">
-  <div class="container">
-    <h1 class="text-center text-white">{{ section.settings.title }}</h1>
-  </div><!--/.container-->
+	<div class="container">
+		<h1 class="text-center text-white">{{ section.settings.title }}</h1>
+	</div><!--/.container-->
 </div><!--/.wrapper-list-collection-->
 
 <div class="container-collections">
-  <div class="container">
-      <div class="row">
-        {% for collection in collections %}
-        <div class="col-md-6">
-            <div class="single-collection">
-                <a href="{{ collection.url  }}">
-                    <div class="collection-img p-5">
-                        {{ collection.featured_image | img_url: 'master' | img_tag: '','d-block w-100' }}
-                    </div>
-                    <div class="collection-title text-center pb-4">
-                        <h2>{{ collection.title }}</h2>
-                    </div><!--/.collection-title-->
-                </a>
-            </div><!--/.single-collection-->
-        </div><!--/.col-->
-        {% endfor %}
-      </div><!-- /row -->
-  </div><!-- /container -->
+	<div class="container">
+			<div class="row">
+				{% for collection in collections %}
+				<div class="col-md-6">
+						<div class="single-collection">
+								<a href="{{ collection.url  }}">
+										<div class="collection-img p-5">
+												{{ collection.featured_image | img_url: 'master' | img_tag: '','d-block w-100' }}
+										</div>
+										<div class="collection-title text-center pb-4">
+												<h2>{{ collection.title }}</h2>
+										</div><!--/.collection-title-->
+								</a>
+						</div><!--/.single-collection-->
+				</div><!--/.col-->
+				{% endfor %}
+			</div><!-- /row -->
+	</div><!-- /container -->
 </div><!-- /.container-collections -->
-
-
-{% schema %}
-{
-  "name": "t:sections.main-list-collections.name",
-  "class": "section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "t:sections.main-list-collections.settings.title.label",
-      "default": "Collections"
-    },
-    {
-      "type": "select",
-      "id": "sort",
-      "options": [
-        {
-          "value": "alphabetical",
-          "label": "t:sections.main-list-collections.settings.sort.options__1.label"
-        },
-        {
-          "value": "alphabetical_reversed",
-          "label": "t:sections.main-list-collections.settings.sort.options__2.label"
-        },
-        {
-          "value": "date_reversed",
-          "label": "t:sections.main-list-collections.settings.sort.options__3.label"
-        },
-        {
-          "value": "date",
-          "label": "t:sections.main-list-collections.settings.sort.options__4.label"
-        },
-        {
-          "value": "products_high",
-          "label": "t:sections.main-list-collections.settings.sort.options__5.label"
-        },
-        {
-          "value": "products_low",
-          "label": "t:sections.main-list-collections.settings.sort.options__6.label"
-        }
-      ],
-      "default": "alphabetical",
-      "label": "t:sections.main-list-collections.settings.sort.label"
-    }
-  ]
-}
-{% endschema %}
