@@ -28,7 +28,7 @@ h1 {
     }
 
     @include media (sm-max) {
-        font-size: 16px;
+        font-size: 18px;
     }
 }
 
@@ -204,15 +204,36 @@ h3 {
 
         @include media (sm-max) {
             margin-left: 20px;
-            max-width: 100px;
+            max-width: 140px;
         }
     }
 }
 
 .item img {
-    max-height: 500px;
+    max-height: 600px;
+    min-height: 600px;
     object-fit: cover;
     width: 100%;
+
+    @include media(xl-max) {
+        max-height: 500px;
+        min-height: 500px;
+    }
+    
+    @include media(lg-max) {
+        min-height: 400px;
+        min-height: 400px;
+    }
+
+    @include media(md-max) {
+        max-height: 300px;
+        min-height: 300px;
+    }
+    
+    @include media(sm-max) {
+        max-height: 150px;
+        min-height: 150px;
+    }
 }
 
 .container-collections {
@@ -221,8 +242,19 @@ h3 {
 
 .single-collection  {
     .collection-img img {
+        min-height: 250px;
         max-height: 250px;
         object-fit: contain;
+        
+        @include media(lg-max) {
+            min-height: 200px;
+            max-height: 200px;
+        }
+
+        @include media(md-max) {
+            min-height: 150px;
+            max-height: 150px;
+        }
     }
 
     a {

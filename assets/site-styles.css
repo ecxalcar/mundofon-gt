@@ -23,7 +23,7 @@ h1 {
       font-size: 32px; } }
   @media screen and (max-width: 575px) {
     h1 {
-      font-size: 16px; } }
+      font-size: 18px; } }
 
 h2 {
   font-size: 36px;
@@ -163,21 +163,47 @@ h3 {
     @media screen and (max-width: 575px) {
       .glider-slide h1 {
         margin-left: 20px;
-        max-width: 100px; } }
+        max-width: 140px; } }
 
 .item img {
-  max-height: 500px;
+  max-height: 600px;
+  min-height: 600px;
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%; }
+  @media screen and (max-width: 1199px) {
+    .item img {
+      max-height: 500px;
+      min-height: 500px; } }
+  @media screen and (max-width: 991px) {
+    .item img {
+      min-height: 400px;
+      min-height: 400px; } }
+  @media screen and (max-width: 767px) {
+    .item img {
+      max-height: 300px;
+      min-height: 300px; } }
+  @media screen and (max-width: 575px) {
+    .item img {
+      max-height: 150px;
+      min-height: 150px; } }
 
 .container-collections {
   padding: 50px 0; }
 
 .single-collection .collection-img img {
+  min-height: 250px;
   max-height: 250px;
   -o-object-fit: contain;
      object-fit: contain; }
+  @media screen and (max-width: 991px) {
+    .single-collection .collection-img img {
+      min-height: 200px;
+      max-height: 200px; } }
+  @media screen and (max-width: 767px) {
+    .single-collection .collection-img img {
+      min-height: 150px;
+      max-height: 150px; } }
 
 .single-collection a {
   color: #000;

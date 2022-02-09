@@ -16,14 +16,18 @@
         {% endif %}
     </div><!--/.container-->
 
-    <div class="glider-featured-slider" data-sliderId=" {{ section.id }}">
+    <div id="heroFeaturedSlider" class="glider-featured-slider" data-sliderId="{{ section.id }}">
         {% for block in section.blocks %}
             {% case block.type %}
                 {% when 'slide' %}
                     <div class="item">
-                        {{ block.settings.slide_image | img_url: 'master' | img_tag: 'alt text', 'd-block w-100' }}
+                        {% if block.settings.slide_image %}
+                            {{ block.settings.slide_image | img_url: 'master' | img_tag: 'alt text', 'd-block w-100' }}
+                        {% else %}
+                            {{ 'form-bg.jpg' | asset_url | img_tag: '','d-block w-100' }}
+                        {% endif %}
                         <div class="container">
-                            <h1>Un mundo de Smartphones y consolas</h1>
+                            <h1 style="color: {{ block.settings.color_heading }}; ">{{ block.settings.slide_heading }}</h1>
                         </div><!--/.container-->
                     </div><!-- /item -->
             {% endcase %}
@@ -39,148 +43,6 @@
         {% endfor %}
     </div><!--/.glider-featured-slider-->
 </div><!-- /.featured-slider-section -->
-
-<div class="container-collections">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="single-collection">
-                    <a href="#0">
-                        <div class="collection-img p-5">
-                            {{ 'smartphones-collection.png' | asset_url | img_tag: '','d-block w-100' }}
-                        </div>
-                        <div class="collection-title text-center pb-4">
-                            <h2>Smartphones</h2>
-                        </div><!--/.collection-title-->
-                    </a>
-                </div><!--/.single-collection-->
-            </div><!--/.col-->
-            <div class="col-md-6">
-                <div class="single-collection">
-                    <a href="#0">
-                        <div class="collection-img p-5">
-                            {{ 'consolas-collection.png' | asset_url | img_tag: '','d-block w-100' }}
-                        </div>
-                        <div class="collection-title text-center pb-4">
-                            <h2>Consolas</h2>
-                        </div><!--/.collection-title-->
-                    </a>
-                </div><!--/.single-collection-->
-            </div><!--/.col-->
-        </div><!-- /row -->
-    </div><!-- /container -->
-</div><!-- /.container-collections -->
-
-<div class="featured-banner my-5">
-    <div class="container">
-        <div class="featured-banner-wrapper p-4 p-md-5 bg-info">
-            <div class="row">
-                <div class="col-md-7 col-lg-8 d-flex align-items-center">
-                    <div class="description mb-4 mb-md-0">
-                        <h2 class="text-warning"><strong>Lo más nuevo!</strong></h2>
-                        <h2 class="text-white mb-4">Aquí encontrarás consolas más potentes del momento.</h2>
-                        <a href="#0" class="btn btn-secondary px-5 py-3">Comprar ahora</a>
-                    </div>
-                </div>
-                <div class="col-md-5 col-lg-4">
-                    <div class="img">
-                        {{ 'img-banner.png' | asset_url | img_tag: '','d-block w-100' }}
-                    </div><!-- /img -->
-                </div><!-- /col -->
-            </div><!-- /row -->
-        </div><!-- /featured-banner-wrapper -->
-    </div><!-- /container -->
-</div><!--/.featured-banner-->
-
-<div class="popular-products py-5">
-    <div class="container">
-        <div class="heading-section">
-            <h2>Productos más populares</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-lg-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-4 col-lg-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-4 col-lg-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-4 col-lg-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-        </div><!-- /row -->
-        <a href="#0" class="see-all">Ver más</a>
-    </div><!-- /container -->
-</div><!-- /popular-products -->
-
-<div class="collection-products py-5">
-    <div class="container">
-        <div class="heading-section">
-            <h2>Consolas</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-        </div><!-- /row -->
-        <a href="#0" class="see-all">Ver más</a>
-    </div><!-- /container -->
-</div><!-- /collection-products -->
-
-<div class="collection-products py-5">
-    <div class="container">
-        <div class="heading-section">
-            <h2>Smartphones</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-        </div><!-- /row -->
-        <a href="#0" class="see-all">Ver más</a>
-    </div><!-- /container -->
-</div><!-- /collection-products -->
-
-<div class="featured-banner my-5">
-    <div class="container">
-        <div class="featured-banner-wrapper p-4 p-md-5 bg-secondary">
-            <div class="row">
-                <div class="col-md-5 col-lg-4">
-                    <div class="img mb-4 mb-md-0">
-                        {{ 'gift-card.png' | asset_url | img_tag: '','d-block w-100' }}
-                    </div><!-- /img -->
-                </div><!-- /col -->
-                <div class="col-md-7 col-lg-8 d-flex align-items-center">
-                    <div class="description">
-                        <h2 class="text-danger"><strong>Tarjetas de regalo</strong></h2>
-                        <h2 class="text-dark mb-4">Canjéalas por productos de nuestra tienda.</h2>
-                        <a href="#0" class="btn btn-info px-5 py-3 text-white">Comprar ahora</a>
-                    </div>
-                </div>
-            </div><!-- /row -->
-        </div><!-- /featured-banner-wrapper -->
-    </div><!-- /container -->
-</div><!--/.featured-banner-->
 
 {% schema %}
 {
@@ -209,7 +71,13 @@
                     "type": "text",
                     "id": "slide_heading",
                     "label": "Slide Heading",
-                    "default": "Slide 1"
+                    "default": "Un mundo de Smartphones y consolas"
+                },
+                {
+                    "type": "color",
+                    "id": "color_heading",
+                    "label": "Heading Color",
+                    "default": "#000"
                 }
             ]
         }

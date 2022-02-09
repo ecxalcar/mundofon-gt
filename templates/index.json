@@ -5,9 +5,25 @@
       "settings": {
         "section_arrows": true
       }
+    },
+    "mundofon_featured_collections": {
+      "type": "mundofon-featured-collections"
+    },
+    "mundofon_featured_banner": {
+      "type": "mundofon-featured-banner"
+    },
+    "mundofon_popular_products": {
+      "type": "mundofon-popular-products"
+    },
+    "mundofon_featured_collection_grid": {
+      "type": "mundofon-featured-collection-grid"
     }
   },
   "order": [
-    "mundofon_featured_slider"
+    "mundofon_featured_slider",
+    "mundofon_featured_collections",
+    "mundofon_featured_banner",
+    "mundofon_popular_products",
+    "mundofon_featured_collection_grid"
   ]
 }

@@ -36,6 +36,11 @@
       document.documentElement.classList.add('shopify-design-mode');
     }
     </script>
+
+    <!-- MY SCRIPTS -->
+    <script src="{{ 'bootstrap.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'glider.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'site-scripts.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body>
@@ -87,9 +92,6 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
       {%- endif -%}
 
-      <!-- MY SCRIPTS -->
-      <script src="{{ 'bootstrap.min.js' | asset_url }}" defer="defer"></script>
-      <script src="{{ 'glider.min.js' | asset_url }}" defer="defer"></script>
-      <script src="{{ 'site-scripts.js' | asset_url }}" defer="defer"></script>
+      
     </body>
 </html>
