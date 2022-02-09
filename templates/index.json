@@ -39,6 +39,24 @@
     },
     "mundofon_featured_collections": {
       "type": "mundofon-featured-collections",
+      "blocks": {
+        "99c6bc28-b7a1-49f5-8f4c-3605f7cd6b01": {
+          "type": "single_collection",
+          "settings": {
+            "featured_collection": "consolas"
+          }
+        },
+        "3f25ebfa-a094-4228-b42d-8d3c856c9539": {
+          "type": "single_collection",
+          "settings": {
+            "featured_collection": "smartphones"
+          }
+        }
+      },
+      "block_order": [
+        "99c6bc28-b7a1-49f5-8f4c-3605f7cd6b01",
+        "3f25ebfa-a094-4228-b42d-8d3c856c9539"
+      ],
       "settings": {
       }
     },
