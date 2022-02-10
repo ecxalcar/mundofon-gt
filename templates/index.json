@@ -2,21 +2,78 @@
   "sections": {
     "mundofon_featured_slider": {
       "type": "mundofon-featured-slider",
+      "blocks": {
+        "32b3a81a-9d57-4597-94f6-0efcc2eefa93": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/slide1.jpg",
+            "slide_heading": "Un mundo de Smartphones y consolas",
+            "color_heading": "#000"
+          }
+        },
+        "699f8880-fe4d-4a7c-a039-bef993e0a2f3": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/slide3.jpg",
+            "slide_heading": "Un mundo de Smartphones y consolas",
+            "color_heading": "#ffffff"
+          }
+        },
+        "ac08593c-33de-463b-bcc1-02ff52d59ee0": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/slide2.jpg",
+            "slide_heading": "Un mundo de Smartphones y consolas",
+            "color_heading": "#000"
+          }
+        }
+      },
+      "block_order": [
+        "32b3a81a-9d57-4597-94f6-0efcc2eefa93",
+        "699f8880-fe4d-4a7c-a039-bef993e0a2f3",
+        "ac08593c-33de-463b-bcc1-02ff52d59ee0"
+      ],
       "settings": {
         "section_arrows": true
       }
     },
     "mundofon_featured_collections": {
-      "type": "mundofon-featured-collections"
+      "type": "mundofon-featured-collections",
+      "blocks": {
+        "99c6bc28-b7a1-49f5-8f4c-3605f7cd6b01": {
+          "type": "single_collection",
+          "settings": {
+            "featured_collection": "consolas"
+          }
+        },
+        "3f25ebfa-a094-4228-b42d-8d3c856c9539": {
+          "type": "single_collection",
+          "settings": {
+            "featured_collection": "smartphones"
+          }
+        }
+      },
+      "block_order": [
+        "99c6bc28-b7a1-49f5-8f4c-3605f7cd6b01",
+        "3f25ebfa-a094-4228-b42d-8d3c856c9539"
+      ],
+      "settings": {
+      }
     },
     "mundofon_featured_banner": {
-      "type": "mundofon-featured-banner"
+      "type": "mundofon-featured-banner",
+      "settings": {
+      }
     },
     "mundofon_popular_products": {
-      "type": "mundofon-popular-products"
+      "type": "mundofon-popular-products",
+      "settings": {
+      }
     },
     "mundofon_featured_collection_grid": {
-      "type": "mundofon-featured-collection-grid"
+      "type": "mundofon-featured-collection-grid",
+      "settings": {
+      }
     }
   },
   "order": [
