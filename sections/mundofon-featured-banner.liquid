@@ -1,41 +1,213 @@
 <div class="featured-banner my-5">
     <div class="container">
-        <div class="featured-banner-wrapper p-4 p-md-5 bg-info">
+        <div class="featured-banner-wrapper p-4 p-md-5 {{ section.settings.banner_bg }}">
             <div class="row">
-                <div class="col-md-7 col-lg-8 d-flex align-items-center">
-                    <div class="description mb-4 mb-md-0">
-                        <h2 class="text-warning"><strong>Lo más nuevo!</strong></h2>
-                        <h2 class="text-white mb-4">Aquí encontrarás consolas más potentes del momento.</h2>
-                        <a href="#0" class="btn btn-secondary px-5 py-3">Comprar ahora</a>
-                    </div>
-                </div>
-                <div class="col-md-5 col-lg-4">
-                    <div class="img">
-                        {{ 'img-banner.png' | asset_url | img_tag: '','d-block w-100' }}
-                    </div><!-- /img -->
-                </div><!-- /col -->
+                {% for block in section.blocks %}
+                    {% if block.type == 'banner_text' %}
+                        <div class="col-md-7 col-lg-8 d-flex align-items-center">
+                            <div class="description mb-4 mb-md-0">
+                                <h2 class="{{ section.settings.banner_main_title_color }}"><strong>{{ block.settings.banner_main_title }}</strong></h2>
+                                <h3 class="{{ section.settings.banner_description_color }} mb-4">{{ block.settings.banner_description }}</h3>
+                                <a href="{{ block.settings.banner_btn_url }}" class="btn {{ section.settings.banner_btn_color }} px-5 py-3">{{ block.settings.banner_btn_text }}</a>
+                            </div><!--/.description-->
+                        </div><!--/.col-->
+                    {% elsif block.type == 'banner_img' %}
+                        <div class="col-md-5 col-lg-4">
+                            <div class="img">
+                                {% if block.settings.banner_img %}
+                                    {{ block.settings.banner_img | img_url: 'master' | img_tag: '','d-block w-100' }}
+                                {% else %}
+                                    {{ 'img-banner.png' | asset_url | img_tag: '','d-block w-100' }}
+                                {% endif %}
+                            </div><!-- /img -->
+                        </div><!-- /col -->
+                    {% endif %}
+                {% else %}
+                    <div class="col-md-7 col-lg-8 d-flex align-items-center">
+                        <div class="description mb-4 mb-md-0">
+                            <h2 class="text-warning"><strong>Lo más nuevo!</strong></h2>
+                            <h3 class="text-white mb-4">Aquí encontrarás consolas más potentes del momento.</h3>
+                            <a href="#0" class="btn btn-secondary px-5 py-3">Comprar ahora</a>
+                        </div><!--/.description-->
+                    </div><!--/.col-->
+                    <div class="col-md-5 col-lg-4">
+                        <div class="img">
+                            {{ 'img-banner.png' | asset_url | img_tag: '','d-block w-100' }}
+                        </div><!-- /img -->
+                    </div><!-- /col -->
+                {% endfor %}
             </div><!-- /row -->
         </div><!-- /featured-banner-wrapper -->
     </div><!-- /container -->
 </div><!--/.featured-banner-->
 
-<div class="featured-banner my-5">
+<!-- <div class="featured-banner my-5">
     <div class="container">
         <div class="featured-banner-wrapper p-4 p-md-5 bg-secondary">
             <div class="row">
                 <div class="col-md-5 col-lg-4">
                     <div class="img mb-4 mb-md-0">
                         {{ 'gift-card.png' | asset_url | img_tag: '','d-block w-100' }}
-                    </div><!-- /img -->
-                </div><!-- /col -->
+                    </div>
+                </div>
                 <div class="col-md-7 col-lg-8 d-flex align-items-center">
                     <div class="description">
                         <h2 class="text-danger"><strong>Tarjetas de regalo</strong></h2>
-                        <h2 class="text-dark mb-4">Canjéalas por productos de nuestra tienda.</h2>
+                        <h3 class="text-dark mb-4">Canjéalas por productos de nuestra tienda.</h3>
                         <a href="#0" class="btn btn-info px-5 py-3 text-white">Comprar ahora</a>
                     </div>
                 </div>
-            </div><!-- /row -->
-        </div><!-- /featured-banner-wrapper -->
-    </div><!-- /container -->
-</div><!--/.featured-banner-->
+            </div>
+        </div>
+    </div>
+</div> -->
+
+{% schema %}
+{
+    "name": "Featured Banner",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Estilos de banner"
+        },
+        {
+            "type": "select",
+            "id": "banner_bg",
+            "label": "Fondo del banner",
+            "options": [
+                {
+                    "value": "bg-info",
+                    "label": "Info"
+                },
+                {
+                    "value": "bg-primary",
+                    "label": "Primary"
+                },
+                {
+                    "value": "bg-secondary",
+                    "label": "Secondary"
+                }
+            ],
+            "default": "bg-info"
+        },
+        {
+            "type": "select",
+            "id": "banner_main_title_color",
+            "label": "Color del titulo principal",
+            "options": [
+                {
+                    "value": "text-warning",
+                    "label": "Warning"
+                },
+                {
+                    "value": "text-danger",
+                    "label": "Danger"
+                },
+                {
+                    "value": "text-info",
+                    "label": "Info"
+                },
+                {
+                    "value": "text-dark",
+                    "label": "Dark"
+                },
+                {
+                    "value": "text-primary",
+                    "label": "Primary"
+                },
+                {
+                    "value": "text-secondary",
+                    "label": "Secondary"
+                }
+            ],
+            "default": "text-warning"
+        },
+        {
+            "type": "select",
+            "id": "banner_description_color",
+            "label": "Color de la descripción",
+            "options": [
+                {
+                    "value": "text-dark",
+                    "label": "Dark"
+                },
+                {
+                    "value": "text-white",
+                    "label": "Light"
+                }
+            ],
+            "default": "text-dark"
+        },
+        {
+            "type": "select",
+            "id": "banner_btn_color",
+            "label": "Color del botón",
+            "options": [
+                {
+                    "value": "btn-primary",
+                    "label": "Primary"
+                },
+                {
+                    "value": "btn-secondary",
+                    "label": "Secondary"
+                },
+                {
+                    "value": "btn-info",
+                    "label": "Info"
+                }
+            ],
+            "default": "btn-secondary"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Text",
+            "type": "banner_text",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "banner_main_title",
+                    "label": "Titulo principal",
+                    "default": "Lo más nuevo!"
+                },
+                {
+                    "type": "textarea",
+                    "id": "banner_description",
+                    "label": "Descripción",
+                    "default": "Aquí encontrarás consolas más potentes del momento."
+                },
+                {
+                    "type": "text",
+                    "id": "banner_btn_text",
+                    "label": "Texto del botón",
+                    "default": "Click aquí!"
+                },
+                {
+                    "type": "url",
+                    "id": "banner_btn_url",
+                    "label": "Enlace"
+                }
+            ]
+        },
+        {
+            "name": "Image",
+            "type": "banner_img",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "banner_img",
+                    "label": "Imagen"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Featured Banner"
+        }
+    ]
+}
+{% endschema %}

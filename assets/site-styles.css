@@ -47,7 +47,7 @@ h3 {
 .bg-primary,
 .btn-primary {
   background-color: #CFE7F4 !important;
-  color: #000;
+  color: #000 !important;
   border-color: #CFE7F4 !important; }
 
 .bg-secondary,
@@ -59,11 +59,14 @@ h3 {
 .bg-info,
 .btn-info {
   background-color: #07689F !important;
-  color: #000;
+  color: #fff;
   border-color: #07689F !important; }
 
 .text-info {
   color: #07689F !important; }
+
+.text-primary {
+  color: #CFE7F4 !important; }
 
 .btn:hover,
 .btn:active,
