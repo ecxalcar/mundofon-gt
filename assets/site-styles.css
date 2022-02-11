@@ -194,17 +194,20 @@ h3 {
 .container-collections {
   padding: 50px 0; }
 
-.single-collection .collection-img img {
+.single-collection .collection-img img,
+.single-collection .collection-img svg {
   min-height: 250px;
   max-height: 250px;
   -o-object-fit: contain;
      object-fit: contain; }
   @media screen and (max-width: 991px) {
-    .single-collection .collection-img img {
+    .single-collection .collection-img img,
+    .single-collection .collection-img svg {
       min-height: 200px;
       max-height: 200px; } }
   @media screen and (max-width: 767px) {
-    .single-collection .collection-img img {
+    .single-collection .collection-img img,
+    .single-collection .collection-img svg {
       min-height: 150px;
       max-height: 150px; } }
 

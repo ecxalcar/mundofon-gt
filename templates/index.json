@@ -68,6 +68,7 @@
     "mundofon_popular_products": {
       "type": "mundofon-popular-products",
       "settings": {
+        "section_collection": "best-seller"
       }
     },
     "mundofon_featured_collection_grid": {

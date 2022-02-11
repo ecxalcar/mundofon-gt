@@ -1,22 +1,68 @@
 <div class="popular-products py-5">
     <div class="container">
         <div class="heading-section">
-            <h2>Productos más populares</h2>
+            <h2>{{ section.settings.section_title }}</h2>
         </div>
         <div class="row">
-            <div class="col-md-4 col-lg-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-4 col-lg-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-4 col-lg-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-4 col-lg-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
+            {% for product in collections[section.settings.section_collection].products limit: section.settings.section_products_to_show %}
+                <div class="col-md-4 {{ section.settings.section_columns }} mb-4 mb-4">
+                    {% render 'mundofongt-card-product' product: product %}
+                </div><!-- /col -->
+            {% endfor %}
         </div><!-- /row -->
-        <a href="#0" class="see-all">Ver más</a>
+        <a href="{{ section.settings.section_btn_url }}" class="see-all">{{ section.settings.section_btn_text }}</a>
     </div><!-- /container -->
 </div><!-- /popular-products -->
+
+{% schema %}
+{
+    "name": "Featured Collection Grid",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "section_title",
+            "label": "Titulo de la sección",
+            "default": "Nombre de la colección"
+        },
+        {
+            "type": "collection",
+            "id": "section_collection",
+            "label": "Selecciona una colección"
+        },
+        {
+            "type": "text",
+            "id": "section_btn_text",
+            "label": "Texto del botón",
+            "default": "Ver más"
+        },
+        {
+            "type": "url",
+            "id": "section_btn_url",
+            "label": "Url del botón"
+        },
+        {
+            "type": "radio",
+            "id": "section_columns",
+            "label": "Columnas por fila?",
+            "options": [
+                {
+                    "value": "col-lg-4",
+                    "label": "3"
+                },
+                {
+                    "value": "col-lg-3",
+                    "label": "4"
+                }
+            ],
+            "default": "col-lg-3"
+        },
+        {
+            "type" : "number",
+            "id" : "section_products_to_show",
+            "label" : "Cantidad de productos a mostrar?",
+            "default" : 8
+        }
+    ]
+}
+{% endschema %}

@@ -31,15 +31,6 @@
                         </div><!--/.container-->
                     </div><!-- /item -->
             {% endcase %}
-        {% else %}
-            {% for block in (1..3) %}
-                <div class="item">
-                    {{ 'slide1.jpg' | asset_url | img_tag: '','d-block w-100' }}
-                    <div class="container">
-                        <h1>Un mundo de Smartphones y consolas</h1>
-                    </div><!--/.container-->
-                </div><!--/.item-->
-            {% endfor %}
         {% endfor %}
     </div><!--/.glider-featured-slider-->
 </div><!-- /.featured-slider-section -->

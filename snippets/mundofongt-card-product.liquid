@@ -1,17 +1,25 @@
-<div class="product-card">
-    <a href="#0">
+<div class="product-card border">
+    <a href="{{ product.url }}">
         <div class="img-wrapper mb-4">
-            {% if product.featured_media == blank %}
-            {{ 'product2.png' | asset_url | img_tag: '','d-block' }}
+            {% if product.featured_media %}
+                {{ product.featured_media | img_url: 'master' | img_tag: '','d-block' }}
             {% else %}
-            {{ 'product-5' | placeholder_svg_tag }}
+                {{ 'product-5' | placeholder_svg_tag }}
             <!-- {{ product.featured_media | img_url: 'master' | img_tag: 'card-img-top' }} -->
             {% endif %}
         </div><!-- /img -->
         <div class="description">
-            <p>CONSOLA XBOX ONE SERIES X 1TB NEGRO (CARBON BLACK)</p>
+            {% if product.title %}
+                <p>{{ product.title }}</p>
+            {% else %}
+                <p>Product Title</p>
+            {% endif %}
         </div><!-- /description -->
-        <span class="price">Q9000.00</span>
+        {% if product.price %}
+            <span class="price">{{ product.price | money_with_currency }}</span>
+        {% else %}
+            <span class="price">Q9000.00</span>
+        {% endif %}
         <div class="details">Ver Detalles</div>
     </a>
 </div><!-- /product-card -->

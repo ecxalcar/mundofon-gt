@@ -245,7 +245,8 @@ h3 {
 }
 
 .single-collection  {
-    .collection-img img {
+    .collection-img img,
+    .collection-img svg  {
         min-height: 250px;
         max-height: 250px;
         object-fit: contain;
