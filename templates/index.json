@@ -65,15 +65,10 @@
       "settings": {
       }
     },
-    "mundofon_popular_products": {
-      "type": "mundofon-popular-products",
-      "settings": {
-        "section_collection": "best-seller"
-      }
-    },
     "mundofon_featured_collection_grid": {
       "type": "mundofon-featured-collection-grid",
       "settings": {
+        "section_collection": "best-seller"
       }
     }
   },
@@ -81,7 +76,6 @@
     "mundofon_featured_slider",
     "mundofon_featured_collections",
     "mundofon_featured_banner",
-    "mundofon_popular_products",
     "mundofon_featured_collection_grid"
   ]
 }

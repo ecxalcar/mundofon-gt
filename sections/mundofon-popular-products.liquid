@@ -5,7 +5,7 @@
         </div>
         <div class="row">
             {% for product in collections[section.settings.section_collection].products limit: section.settings.section_products_to_show %}
-                <div class="col-md-4 {{ section.settings.section_columns }} mb-4 mb-4">
+                <div class="{{ section.settings.section_columns }} mb-4 mb-4">
                     {% render 'mundofongt-card-product' product: product %}
                 </div><!-- /col -->
             {% endfor %}
@@ -47,15 +47,15 @@
             "label": "Columnas por fila?",
             "options": [
                 {
-                    "value": "col-lg-4",
+                    "value": "col-md-4",
                     "label": "3"
                 },
                 {
-                    "value": "col-lg-3",
+                    "value": "col-md-3",
                     "label": "4"
                 }
             ],
-            "default": "col-lg-3"
+            "default": "col-md-3"
         },
         {
             "type" : "number",

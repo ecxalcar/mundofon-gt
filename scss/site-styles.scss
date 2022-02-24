@@ -429,7 +429,13 @@ h3 {
             }
         }
     }
+}
 
+.featured-image-primary {
+    img {
+        max-height: 450px;
+        object-fit: contain;
+    }
 }
 
 .share-buttons {

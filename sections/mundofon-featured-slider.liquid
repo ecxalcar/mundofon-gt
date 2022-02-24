@@ -20,16 +20,16 @@
         {% for block in section.blocks %}
             {% case block.type %}
                 {% when 'slide' %}
-                    <div class="item">
-                        {% if block.settings.slide_image %}
-                            {{ block.settings.slide_image | img_url: 'master' | img_tag: 'alt text', 'd-block w-100' }}
-                        {% else %}
-                            {{ 'form-bg.jpg' | asset_url | img_tag: '','d-block w-100' }}
-                        {% endif %}
-                        <div class="container">
-                            <h1 style="color: {{ block.settings.color_heading }}; ">{{ block.settings.slide_heading }}</h1>
-                        </div><!--/.container-->
-                    </div><!-- /item -->
+                <div class="item">
+                    {% if block.settings.slide_image %}
+                        {{ block.settings.slide_image | img_url: 'master' | img_tag: 'alt text', 'd-block w-100' }}
+                    {% else %}
+                        {{ 'form-bg.jpg' | asset_url | img_tag: '','d-block w-100' }}
+                    {% endif %}
+                    <div class="container">
+                        <h1 style="color: {{ block.settings.color_heading }}; ">{{ block.settings.slide_heading }}</h1>
+                    </div><!--/.container-->
+                </div><!-- /item -->
             {% endcase %}
         {% endfor %}
     </div><!--/.glider-featured-slider-->

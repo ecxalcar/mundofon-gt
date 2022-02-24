@@ -4,15 +4,15 @@
             <div class="row">
                 {% for block in section.blocks %}
                     {% if block.type == 'banner_text' %}
-                        <div class="col-md-7 col-lg-8 d-flex align-items-center">
-                            <div class="description mb-4 mb-md-0">
+                        <div class="col-md-{{ block.settings.banner_description_col_width }} d-flex align-items-center">
+                            <div class="description mb-5 mb-md-0">
                                 <h2 class="{{ section.settings.banner_main_title_color }}"><strong>{{ block.settings.banner_main_title }}</strong></h2>
                                 <h3 class="{{ section.settings.banner_description_color }} mb-4">{{ block.settings.banner_description }}</h3>
                                 <a href="{{ block.settings.banner_btn_url }}" class="btn {{ section.settings.banner_btn_color }} px-5 py-3">{{ block.settings.banner_btn_text }}</a>
                             </div><!--/.description-->
                         </div><!--/.col-->
                     {% elsif block.type == 'banner_img' %}
-                        <div class="col-md-5 col-lg-4">
+                        <div class="col-md-{{ block.settings.banner_img_col_width }} align-self-center">
                             <div class="img">
                                 {% if block.settings.banner_img %}
                                     {{ block.settings.banner_img | img_url: 'master' | img_tag: '','d-block w-100' }}
@@ -23,14 +23,14 @@
                         </div><!-- /col -->
                     {% endif %}
                 {% else %}
-                    <div class="col-md-7 col-lg-8 d-flex align-items-center">
+                    <div class="col-md-8 d-flex align-items-center">
                         <div class="description mb-4 mb-md-0">
                             <h2 class="text-warning"><strong>Lo más nuevo!</strong></h2>
                             <h3 class="text-white mb-4">Aquí encontrarás consolas más potentes del momento.</h3>
                             <a href="#0" class="btn btn-secondary px-5 py-3">Comprar ahora</a>
                         </div><!--/.description-->
                     </div><!--/.col-->
-                    <div class="col-md-5 col-lg-4">
+                    <div class="col-md-4">
                         <div class="img">
                             {{ 'img-banner.png' | asset_url | img_tag: '','d-block w-100' }}
                         </div><!-- /img -->
@@ -97,6 +97,14 @@
             "label": "Color del titulo principal",
             "options": [
                 {
+                    "value": "text-primary",
+                    "label": "Primary"
+                },
+                {
+                    "value": "text-secondary",
+                    "label": "Secondary"
+                },
+                {
                     "value": "text-warning",
                     "label": "Warning"
                 },
@@ -109,16 +117,12 @@
                     "label": "Info"
                 },
                 {
+                    "value": "text-white",
+                    "label": "White"
+                },
+                {
                     "value": "text-dark",
                     "label": "Dark"
-                },
-                {
-                    "value": "text-primary",
-                    "label": "Primary"
-                },
-                {
-                    "value": "text-secondary",
-                    "label": "Secondary"
                 }
             ],
             "default": "text-warning"
@@ -188,6 +192,62 @@
                     "type": "url",
                     "id": "banner_btn_url",
                     "label": "Enlace"
+                },
+                {
+                    "type": "select",
+                    "id": "banner_description_col_width",
+                    "label": "Ancho de columna",
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": "8%"
+                        },
+                        {
+                            "value": "2",
+                            "label": "16%"
+                        },
+                        {
+                            "value": "3",
+                            "label": "25%"
+                        },
+                        {
+                            "value": "4",
+                            "label": "33%"
+                        },
+                        {
+                            "value": "5",
+                            "label": "41%"
+                        },
+                        {
+                            "value": "6",
+                            "label": "50%"
+                        },
+                        {
+                            "value": "7",
+                            "label": "58%"
+                        },
+                        {
+                            "value": "8",
+                            "label": "66%"
+                        },
+                        {
+                            "value": "9",
+                            "label": "75%"
+                        },
+                        {
+                            "value": "10",
+                            "label": "83%"
+                        },
+                        {
+                            "value": "11",
+                            "label": "91%"
+                        },
+                        {
+                            "value": "12",
+                            "label": "100%"
+                        }
+                    ],
+                    "default": "8"
                 }
             ]
         },
@@ -200,6 +260,62 @@
                     "type": "image_picker",
                     "id": "banner_img",
                     "label": "Imagen"
+                },
+                {
+                    "type": "select",
+                    "id": "banner_img_col_width",
+                    "label": "Ancho de columna",
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": "8%"
+                        },
+                        {
+                            "value": "2",
+                            "label": "16%"
+                        },
+                        {
+                            "value": "3",
+                            "label": "25%"
+                        },
+                        {
+                            "value": "4",
+                            "label": "33%"
+                        },
+                        {
+                            "value": "5",
+                            "label": "41%"
+                        },
+                        {
+                            "value": "6",
+                            "label": "50%"
+                        },
+                        {
+                            "value": "7",
+                            "label": "58%"
+                        },
+                        {
+                            "value": "8",
+                            "label": "66%"
+                        },
+                        {
+                            "value": "9",
+                            "label": "75%"
+                        },
+                        {
+                            "value": "10",
+                            "label": "83%"
+                        },
+                        {
+                            "value": "11",
+                            "label": "91%"
+                        },
+                        {
+                            "value": "12",
+                            "label": "100%"
+                        }
+                    ],
+                    "default": "4"
                 }
             ]
         }

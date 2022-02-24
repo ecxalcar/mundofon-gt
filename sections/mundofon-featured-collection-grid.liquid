@@ -1,45 +1,76 @@
 <div class="collection-products py-5">
     <div class="container">
         <div class="heading-section">
-            <h2>Consolas</h2>
+            <h2>{{ section.settings.section_title }}</h2>
         </div>
         <div class="row">
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
+            {% for product in collections[section.settings.section_collection].products limit: section.settings.section_products_to_show %}
+                <div class="{{ section.settings.section_columns }} mb-4 mb-4">
+                    {% render 'mundofongt-card-product' product: product %}
+                </div><!-- /col -->
+            {% endfor %}
         </div><!-- /row -->
-        <a href="#0" class="see-all">Ver más</a>
+        <a href="{{ section.settings.section_btn_url }}" class="see-all">{{ section.settings.section_btn_text }}</a>
     </div><!-- /container -->
-</div><!-- /collection-products -->
+</div><!-- /popular-products -->
 
-<div class="collection-products py-5">
-    <div class="container">
-        <div class="heading-section">
-            <h2>Smartphones</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-            <div class="col-md-3 mb-4 mb-4">
-                {% render 'mundofongt-card-product' %}
-            </div><!-- /col -->
-        </div><!-- /row -->
-        <a href="#0" class="see-all">Ver más</a>
-    </div><!-- /container -->
-</div><!-- /collection-products -->
+{% schema %}
+{
+    "name": "Featured Collection Grid",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "section_title",
+            "label": "Titulo de la sección",
+            "default": "Colección"
+        },
+        {
+            "type": "collection",
+            "id": "section_collection",
+            "label": "Selecciona una colección"
+        },
+        {
+            "type": "text",
+            "id": "section_btn_text",
+            "label": "Texto del botón",
+            "default": "Ver más"
+        },
+        {
+            "type": "url",
+            "id": "section_btn_url",
+            "label": "Url del botón"
+        },
+        {
+            "type": "radio",
+            "id": "section_columns",
+            "label": "Columnas por fila?",
+            "options": [
+                {
+                    "value": "col-md-4",
+                    "label": "3"
+                },
+                {
+                    "value": "col-md-3",
+                    "label": "4"
+                }
+            ],
+            "default": "col-md-3"
+        },
+        {
+            "type" : "number",
+            "id" : "section_products_to_show",
+            "label" : "Cantidad de productos a mostrar?",
+            "default" : 8
+        }
+    ],
+    "presets": [
+        {
+            "name": "Featured Collection Grid",
+            "settings": {
+                "section_collection": "best-seller"
+            }
+        }
+    ]
+}
+{% endschema %}
