@@ -70,12 +70,26 @@
       "settings": {
         "section_collection": "best-seller"
       }
+    },
+    "mundofon_featured_collection_grid2": {
+      "type": "mundofon-featured-collection-grid",
+      "settings": {
+        "section_collection": "consolas"
+      }
+    },
+    "mundofon_featured_banner2": {
+      "type": "mundofon-featured-banner",
+      "settings": {
+        "section_title": "Conmasdfa"
+      }
     }
   },
   "order": [
     "mundofon_featured_slider",
     "mundofon_featured_collections",
     "mundofon_featured_banner",
-    "mundofon_featured_collection_grid"
+    "mundofon_featured_collection_grid",
+    "mundofon_featured_collection_grid2",
+    "mundofon_featured_banner2"
   ]
 }
