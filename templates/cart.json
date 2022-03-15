@@ -2,9 +2,13 @@
   "sections": {
     "cart-items": {
       "type": "main-cart-items"
+    },
+    "banner": {
+      "type": "mundofon-featured-banner"
     }
   },
   "order": [
-    "cart-items"
+    "cart-items",
+    "banner"
   ]
 }

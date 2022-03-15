@@ -5,10 +5,14 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid"
+    },
+    "banner-info": {
+      "type": "mundofon-featured-banner"
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "banner-info"
   ]
 }

@@ -1,26 +1,26 @@
 <div class="wrapper-list-collection-heading py-5 bg-info">
 	<div class="container">
-		<h1 class="text-center text-white">{{ section.settings.title }}</h1>
+		<h1 class="text-center text-white">Colecciones</h1>
 	</div><!--/.container-->
 </div><!--/.wrapper-list-collection-->
 
 <div class="container-collections">
 	<div class="container">
-			<div class="row">
-				{% for collection in collections %}
-				<div class="col-md-6">
-						<div class="single-collection">
-								<a href="{{ collection.url  }}">
-										<div class="collection-img p-5">
-												{{ collection.featured_image | img_url: 'master' | img_tag: '','d-block w-100' }}
-										</div>
-										<div class="collection-title text-center pb-4">
-												<h2>{{ collection.title }}</h2>
-										</div><!--/.collection-title-->
-								</a>
-						</div><!--/.single-collection-->
-				</div><!--/.col-->
-				{% endfor %}
-			</div><!-- /row -->
+		<div class="row">
+			{% for collection in collections %}
+			<div class="col-md-6">
+				<div class="single-collection">
+					<a href="{{ collection.url  }}">
+						<div class="collection-img p-5">
+								{{ collection.featured_image | img_url: 'master' | img_tag: '','d-block w-100' }}
+						</div>
+						<div class="collection-title text-center pb-4">
+								<h2>{{ collection.title }}</h2>
+						</div><!--/.collection-title-->
+					</a>
+				</div><!--/.single-collection-->
+			</div><!--/.col-->
+			{% endfor %}
+		</div><!-- /row -->
 	</div><!-- /container -->
 </div><!-- /.container-collections -->

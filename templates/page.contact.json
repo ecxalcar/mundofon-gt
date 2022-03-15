@@ -8,10 +8,14 @@
       "settings": {
         "heading": ""
       }
+    },
+    "social_media_banner": {
+      "type": "mundofon-social-media-banner"
     }
   },
   "order": [
     "main",
-    "form"
+    "form",
+    "social_media_banner"
   ]
 }

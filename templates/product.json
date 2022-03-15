@@ -5,10 +5,14 @@
     },
     "product-recommendations": {
       "type": "product-recommendations"
+    },
+    "banner": {
+      "type": "mundofon-featured-banner"
     }
   },
   "order": [
     "main",
-    "product-recommendations"
+    "product-recommendations",
+    "banner"
   ]
 }

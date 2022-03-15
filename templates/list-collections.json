@@ -5,9 +5,13 @@
       "settings": {
         "image_ratio": "square"
       }
+    },
+    "banner": {
+      "type": "mundofon-featured-banner"
     }
   },
   "order": [
-    "main"
+    "main",
+    "banner"
   ]
 }

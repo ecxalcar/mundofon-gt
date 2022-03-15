@@ -483,6 +483,8 @@ footer .footer-copyright small, footer .footer-copyright small a {
 footer .social-media {
   max-width: 200px; }
   footer .social-media .icon svg {
+    width: 30px;
+    height: 26px;
     max-width: 30px;
     max-height: 26px; }
     footer .social-media .icon svg path {

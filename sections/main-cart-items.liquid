@@ -15,9 +15,9 @@
 								<thead>
 									<tr class="text-center">
 										<th scope="col-auto">#</th>
-										<th scope="col-auto">Product</th>
-										<th scope="col-auto">Price</th>
-										<th scope="col-auto">Quantity</th>
+										<th scope="col-auto">Producto</th>
+										<th scope="col-auto">Precio</th>
+										<th scope="col-auto">Cantidad</th>
 										<th scope="col-auto">Total</th>
 										<th scope=""></th>
 									</tr>
@@ -51,8 +51,8 @@
 						</div><!--/.col-->
 						<div class="col-auto ms-auto">
 							<div class="amout-container mt-5">
-								<input type="submit" value="Update Cart" class="btn btn-primary px-4">
-								<input type="submit" value="Checkout" name="checkout" class="btn btn-info text-white ms-3 px-4">
+								<input type="submit" value="Actualizar Carrito" class="btn btn-primary px-4">
+								<input type="submit" value="Pagar" name="checkout" class="btn btn-info text-white ms-3 px-4">
 							</div>
 						</div><!--/.col-->
 					</div><!--/.row-->
@@ -64,8 +64,6 @@
 					<div class="row">
 						<div class="col-md-6"><p>Subtotal:</p></div>
 						<div class="col-md-6 mb-3 d-block"><strong>{{ cart.total_price | money_with_currency }}</strong></div>
-						<div class="col-md-6"><p>Promoción inicio de año:</p></div>
-						<div class="col-md-6 mb-3 d-block"><strong>{{ cart.total_price | money_with_currency }}</strong></div>
 						<div class="col-md-6"><p>Total:</p></div>
 						<div class="col-md-6 mb-3 d-block"><strong>{{ cart.total_price | money_with_currency }}</strong></div>
 					</div>
@@ -75,22 +73,25 @@
 	</div><!--/.container-->
 </div><!--/.cart-container-->
 
-<div class="featured-banner-info my-5">
-	<div class="container">
-		<div class="featured-banner-wrapper p-4 p-md-5 bg-info">
-			<div class="row">
-				<div class="col-md-7 d-flex align-items-center">
-					<div class="description mb-4 mb-md-0">
-						<h2 class="text-white mb-4">Métodos de envío</h2>
-						<a href="#0" class="btn btn-primary px-5 py-3">Más información</a>
-					</div><!--/.description-->
-				</div><!--/.col-->
-				<div class="col-md-5 align-self-center">
-					<div class="img">
-						{{ 'envio.svg' | asset_url | img_tag: '','d-block w-100' }}
-					</div><!-- /img -->
-				</div><!-- /col -->
-			</div><!-- /row -->
-		</div><!-- /featured-banner-wrapper -->
-	</div><!-- /container -->
-</div><!--/.featured-banner-->
+<script>
+	let btnsDecrease = document.querySelectorAll('.btn-decrease');
+	let btnsIncrease = document.querySelectorAll('.btn-increase');
+	let quantity = document.querySelectorAll('.quantity');
+
+	for (let i = 0; i < btnsDecrease.length; i++) {
+		let btnDecrease = btnsDecrease[i];
+
+		btnDecrease.addEventListener('click', function() {
+			if (btnDecrease.nextElementSibling.value > 1) {
+				btnDecrease.nextElementSibling.value = parseInt(btnDecrease.nextElementSibling.value) - 1;
+			}
+		});
+	}
+
+	for (let i = 0; i < btnsIncrease.length; i++) {
+		let btnIncrease = btnsIncrease[i];
+		btnIncrease.addEventListener('click', function() {
+			btnIncrease.previousElementSibling.value = parseInt(btnIncrease.previousElementSibling.value) + 1;
+		});
+	}
+</script>

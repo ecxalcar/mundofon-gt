@@ -2,9 +2,13 @@
   "sections": {
     "main": {
       "type": "main-article"
+    },
+    "social_media_banner": {
+      "type": "mundofon-social-media-banner"
     }
   },
   "order": [
-    "main"
+    "main",
+    "social_media_banner"
   ]
 }

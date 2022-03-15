@@ -2,9 +2,17 @@
   "sections": {
     "main": {
       "type": "main-page"
+    },
+    "social_media_banner": {
+      "type": "mundofon-social-media-banner"
+    },
+    "banner": {
+      "type": "mundofon-featured-banner"
     }
   },
   "order": [
-    "main"
+    "main",
+    "social_media_banner",
+    "banner"
   ]
 }
